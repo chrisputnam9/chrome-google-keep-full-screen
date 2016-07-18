@@ -2,8 +2,9 @@
 Makes Google Keep editing use full browser window.
 
 ## Warning
-Use this extension at your own risk. It shouldn't cause problems, but I can't make any guarantees, so back up critical
-notes to a second server.
+Use this extension at your own risk. It shouldn't cause problems, but I can't make any guarantees, so back up critical notes.
+
+![Google Keep Full Screen Screenshot](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/images/screenshot_1280x800.png)
 
 ## Installation
 The simplest method is to install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/kcfmkpjpemonceecfpgamaahlkfpjhdk).
