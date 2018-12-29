@@ -1,7 +1,7 @@
 {
     "name": "Google Keep - Full Screen Edit",
     "description": "Makes note editing take up the full browser window",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "icons": { 
         "16": "images/icon16.png",
         "48": "images/icon48.png",
