@@ -15,7 +15,9 @@
     "content_scripts": [
         {
             "matches": ["*://keep.google.com/*"],
-            "css": ["styles.css"]
+            "css": ["src/styles.css"],
+            "js": ["src/script.js"],
+            "run_at": "document_end"
         }
     ],
 
