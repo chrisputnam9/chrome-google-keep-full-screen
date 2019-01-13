@@ -11,10 +11,10 @@ var main = {
         main.checkForOpenNote();
     },
 
-    checkForOpenNote() {
-        // TODO confirm selector
+    /* TODO confirm selector */
+    checkForOpenNote: function () {
         var noteEl = document.querySelector('.eo9XGd .IZ65Hb-TBnied');
-        if ( ! ('gkfs' in noteEl.dataset) || ! noteEl.dataset.gkfs ) {
+        if (!(noteEl.dataset.hasOwnProperty('gkfs')) || !noteEl.dataset.gkfs) {
             main.note  = new Note(noteEl);
         }
     },
@@ -35,11 +35,12 @@ var Note = function (el) {
         last_button = toolbar.querySelector('.last-button'),
         // TODO get selector
         menu = toolbar.querySelector('.menu'),
-        fs_toggle, fs_help;
+        fs_toggle,
+        fs_help;
 
     // Set up toggle button
     // TODO get tag and set up style
-    fs_toggle = document.createElement('a'),
+    fs_toggle = document.createElement('a');
     fs_toggle.classList.add("fs-toggle");
     if (main.fullscreen) {
         fs_toggle.classList.add("active");
@@ -59,13 +60,13 @@ var Note = function (el) {
     inst.fs_toggle = fs_toggle;
 
     // Set up methods
-    inst.toggle_fullscreen() {
+    inst.toggle_fullscreen = function () {
         inst.container.classList.toggle('gkfs-fullscreen');
         inst.fs_toggle.classList.toggle('active');
-    }
+    };
 
     // Fully initialized, set instance on element data
     inst.el.dataset.gkfs = inst;
-}
+};
 
 main.init();

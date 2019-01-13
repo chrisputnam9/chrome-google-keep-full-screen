@@ -14,7 +14,7 @@
 
     "content_scripts": [
         {
-            "matches": ["*://keep.google.com/*"],
+            "matches": ["*://keep.google.com/*", "chrome-extension://hmjkmjkepdijhoojdojkdfohbdgmmhki/*"],
             "css": ["src/styles.css"],
             "js": ["src/script.js"],
             "run_at": "document_end"
