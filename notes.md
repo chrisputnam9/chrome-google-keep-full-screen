@@ -4,6 +4,8 @@
  - TODOs
     - Toggle fullscreen on/off
     - Help Info (in menu?)
+
+## Documentation
  - Updated screenshots and other images
  - GIF of usage
  - Updated documentation

@@ -1,5 +1,5 @@
 /* Note */
-.eo9XGd.gkfs-fullscreen .IZ65Hb-TBnied {
+.IZ65Hb-n0tgWb.IZ65Hb-fbudBf.gkfs-fullscreen .IZ65Hb-TBnied {
     position: fixed;
     top: 0;
     left: 0;
@@ -8,28 +8,28 @@
 }
 
 /* Note Content */
-.eo9XGd.gkfs-fullscreen .IZ65Hb-s2gQvd {
+.IZ65Hb-n0tgWb.IZ65Hb-fbudBf.gkfs-fullscreen .IZ65Hb-s2gQvd {
     height: 100% !important;
     max-height: calc(100% - 40px) !important; /* span content-area over whole note, minus the bottom toolbar */
 }
 
 /* Toolbar */
-.eo9XGd.gkfs-fullscreen .IZ65Hb-QQhtn .IZ65Hb-TBnied .IZ65Hb-yePe5c {
+.IZ65Hb-n0tgWb.IZ65Hb-fbudBf.gkfs-fullscreen .IZ65Hb-TBnied .IZ65Hb-yePe5c {
     position: absolute;
     bottom: 0;
     width: 100%;
 }
 
 /* Alerts - show over toolbar */
-.eo9XGd.gkfs-fullscreen .Ng57nc.EfADOe.ti6hGc {
+.IZ65Hb-n0tgWb.IZ65Hb-fbudBf.gkfs-fullscreen .Ng57nc.EfADOe.ti6hGc {
     position: relative;
 }
 
 /* TODO set up styling for button (icons) */
 /* Fullscreen Toggle Button */
-.eo9XGd .IZ65Hb-QQhtn .IZ65Hb-TBnied .IZ65Hb-yePe5c .fs-toggle {
+.IZ65Hb-n0tgWb .IZ65Hb-TBnied .IZ65Hb-yePe5c .gkfs-toggle {
 
 }
-.eo9XGd .IZ65Hb-QQhtn .IZ65Hb-TBnied .IZ65Hb-yePe5c .fs-toggle.active {
+.IZ65Hb-n0tgWb .IZ65Hb-TBnied .IZ65Hb-yePe5c .gkfs-toggle.active {
 
 }
