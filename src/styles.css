@@ -28,8 +28,8 @@
 /* TODO set up styling for button (icons) */
 /* Fullscreen Toggle Button */
 .IZ65Hb-n0tgWb .IZ65Hb-TBnied .IZ65Hb-yePe5c .gkfs-toggle {
-
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEUAAAAzMzPI8eYgAAAAAXRSTlMAQObYZgAAACZJREFUeAFjAIFRwP//PwPD//8faM4BU/yDjjPMwGAOa3qmt1EAAJi6f4Gal950AAAAAElFTkSuQmCC);
 }
 .IZ65Hb-n0tgWb .IZ65Hb-TBnied .IZ65Hb-yePe5c .gkfs-toggle.active {
-
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEUAAAAzMzPI8eYgAAAAAXRSTlMAQObYZgAAACNJREFUeAFjgIBR8B+IBieH/z+I8/8DLTnDCtAv3AZ72hkFAK3Sf4Hpvgm3AAAAAElFTkSuQmCC);
 }

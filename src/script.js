@@ -3,20 +3,28 @@ var main = {
     SELECTOR_OPEN_NOTE_CONTAINER: '',
     SELECTOR_OPEN_NOTE: '',
     SELECTOR_OPEN_NOTE_TOOLBAR: '',
+    SELECTOR_NOTE_MENU: '',
 
-    timeout: null,
+    interval: null,
     fullscreen: true,
+
+    elMenu: null,
 
     init: function () {
         this.SELECTOR_OPEN_NOTE_CONTAINER = '.VIpgJd-TUo6Hb.XKSfm-L9AdLc.eo9XGd .IZ65Hb-n0tgWb';
         this.SELECTOR_OPEN_NOTE = this.SELECTOR_OPEN_NOTE_CONTAINER + ' .IZ65Hb-TBnied';
         this.SELECTOR_OPEN_NOTE_TOOLBAR = this.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
+        this.SELECTOR_NOTE_MENU = '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ';
 
-        this.timeout = window.setInterval(this.tick, 250);
+        // TODO set a better way to do this - eg. mutation observer?
+        this.interval = window.setInterval(this.tick, 250);
     },
 
     tick: function () {
         main.checkForOpenNote();
+        if (!main.elMenu) {
+            main.initMenu();
+        }
     },
 
     checkForOpenNote: function () {
@@ -27,6 +35,32 @@ var main = {
             }
         }
     },
+
+    initMenu: function () {
+        console.log('initMenu');
+        this.elMenu = document.querySelector(this.SELECTOR_NOTE_MENU);
+        if (this.elMenu) {
+            var elBtnHelpCnt = document.createElement('div'),
+                elBtnHelp = document.createElement('<a>');
+
+            elBtnHelpCnt.setAttribute('role', 'menuitem');
+            elBtnHelpCnt.classList.add(
+                "gkfs-help-container",
+                "VIpgJd-j7LFlb"
+            );
+
+            elBtnHelp.classList.add(
+                "gkfs-help",
+                "VIpgJd-j7LFlb-bN97Pc"
+            );
+            elBtnHelp.innerText = "Fullscreen Help";
+            elBtnHelp.setAttribute('href', '');
+            elBtnHelp.setAttribute('target', '_blank');
+
+            this.elMenu.insertAdjacentElement('beforeend', elBtnHelpCnt);
+            elBtnHelpCnt.insertAdjacentElement('afterbegin', elBtnHelp);
+        }
+    }
 
 };
 
@@ -40,13 +74,13 @@ var Note = function (el) {
         elContainer = document.querySelector(main.SELECTOR_OPEN_NOTE_CONTAINER),
         elToolbar = el.querySelector(main.SELECTOR_OPEN_NOTE_TOOLBAR),
         elBtnMore = elToolbar.querySelector('div[role="button"][aria-label="More"]'),
-        elBtnToggle,
-        elBtnHelp;
+        elBtnToggle;
 
     // Set up toggle button
     elBtnToggle = document.createElement('div');
     elBtnToggle.setAttribute('role', 'button');
     elBtnToggle.setAttribute('aria-label', 'Full-screen Toggle');
+    elBtnToggle.setAttribute('title', 'Full-screen Toggle');
     elBtnToggle.classList.add(
         "gkfs-toggle",
         "Q0hgme-LgbsSe",
@@ -59,21 +93,6 @@ var Note = function (el) {
     }
     elBtnMore.insertAdjacentElement('beforebegin', elBtnToggle);
     elBtnToggle.addEventListener('click', inst.toggle_fullscreen);
-
-    // TODO get tag and set up style, position, link to gh readme
-    elBtnHelp = document.createElement('a');
-    elBtnToggle.setAttribute('role', 'button');
-    elBtnToggle.setAttribute('aria-label', 'Full-screen Toggle');
-    elBtnToggle.classList.add(
-        "gkfs-help",
-        "Q0hgme-LgbsSe",
-        "Q0hgme-Bz112c-LgbsSe",
-        "INgbqf-LgbsSe",
-        "VIpgJd-LgbsSe"
-    );
-    elBtnHelp.setAttribute('href', '');
-    elBtnHelp.setAttribute('target', '_blank');
-    elBtnMore.insertAdjacentElement('beforeend', elBtnHelp);
 
     // Set up properties
     inst.el = el;
