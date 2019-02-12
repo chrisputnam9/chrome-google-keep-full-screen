@@ -1,3 +1,5 @@
+/* jshint esversion: 6 */
+
 var main = {
 
     SELECTOR_OPEN_NOTE_CONTAINER: '',
@@ -7,8 +9,10 @@ var main = {
 
     interval: null,
     fullscreen: true,
+    note: null,
 
     elMenu: null,
+    elContainer: null,
 
     init: function () {
         this.SELECTOR_OPEN_NOTE_CONTAINER = '.VIpgJd-TUo6Hb.XKSfm-L9AdLc.eo9XGd .IZ65Hb-n0tgWb';
@@ -30,18 +34,27 @@ var main = {
     checkForOpenNote: function () {
         var elNote = document.querySelector(main.SELECTOR_OPEN_NOTE);
         if (elNote) {
-            if (!(elNote.dataset.hasOwnProperty('gkfs')) || !elNote.dataset.gkfs) {
-                main.note  = new Note(elNote);
+
+            // Initialize container if needed
+            if (main.elContainer === null) {
+                main.elContainer = document.querySelector(main.SELECTOR_OPEN_NOTE_CONTAINER);
+                // Default - full screen enabled
+                main.elContainer.classList.add('gkfs-fullscreen');
+            }
+
+            if (elNote.dataset.hasOwnProperty('gkfs') && elNote.dataset.gkfs) {
+                main.note = elNote.dataset.gkfs;
+            } else {
+                main.note  = new Note(elNote, main.elContainer);
             }
         }
     },
 
     initMenu: function () {
-        console.log('initMenu');
         this.elMenu = document.querySelector(this.SELECTOR_NOTE_MENU);
         if (this.elMenu) {
             var elBtnHelpCnt = document.createElement('div'),
-                elBtnHelp = document.createElement('<a>');
+                elBtnHelp = document.createElement('a');
 
             elBtnHelpCnt.setAttribute('role', 'menuitem');
             elBtnHelpCnt.classList.add(
@@ -54,7 +67,7 @@ var main = {
                 "VIpgJd-j7LFlb-bN97Pc"
             );
             elBtnHelp.innerText = "Fullscreen Help";
-            elBtnHelp.setAttribute('href', '');
+            elBtnHelp.setAttribute('href', 'https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md');
             elBtnHelp.setAttribute('target', '_blank');
 
             this.elMenu.insertAdjacentElement('beforeend', elBtnHelpCnt);
@@ -65,13 +78,12 @@ var main = {
 };
 
 /* Note Object */
-var Note = function (el) {
+var Note = function (el, elContainer) {
 
     // Mark element init in progress
     el.dataset.gkfs = 1;
 
     var inst = this,
-        elContainer = document.querySelector(main.SELECTOR_OPEN_NOTE_CONTAINER),
         elToolbar = el.querySelector(main.SELECTOR_OPEN_NOTE_TOOLBAR),
         elBtnMore = elToolbar.querySelector('div[role="button"][aria-label="More"]'),
         elBtnToggle;
@@ -83,6 +95,7 @@ var Note = function (el) {
     elBtnToggle.setAttribute('title', 'Full-screen Toggle');
     elBtnToggle.classList.add(
         "gkfs-toggle",
+        "active",
         "Q0hgme-LgbsSe",
         "Q0hgme-Bz112c-LgbsSe",
         "INgbqf-LgbsSe",
@@ -92,7 +105,6 @@ var Note = function (el) {
         elBtnToggle.classList.add("active");
     }
     elBtnMore.insertAdjacentElement('beforebegin', elBtnToggle);
-    elBtnToggle.addEventListener('click', inst.toggle_fullscreen);
 
     // Set up properties
     inst.el = el;
@@ -100,10 +112,18 @@ var Note = function (el) {
     inst.elBtnToggle = elBtnToggle;
 
     // Set up methods
-    inst.toggle_fullscreen = function () {
-        inst.container.classList.toggle('gkfs-fullscreen');
-        inst.elBtnToggle.classList.toggle('active');
+    inst.toggle_fullscreen = function (event) {
+        inst.elContainer.classList.toggle('gkfs-fullscreen');
+        var active = inst.elContainer.classList.contains('gkfs-fullscreen');
+        let elBtns = document.querySelectorAll('.gkfs-toggle');
+
+        elBtns.forEach(elBtn => {
+            elBtn.classList.toggle('active', active);
+        });
     };
+
+    // Event listener, now that it's defined
+    elBtnToggle.addEventListener('click', inst.toggle_fullscreen);
 
     // Fully initialized, set instance on element data
     inst.el.dataset.gkfs = inst;
