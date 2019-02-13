@@ -19,3 +19,7 @@ This is useful if you want to change the extension or use it as an example for y
  5. The extension should now be installed.
  6. You can modify the extension, save changes, then refresh **chrome://extensions** page to have
     them take effect.
+
+## Issues?
+Found a bug? Have a suggestion?
+[Submit it here](https://github.com/chrisputnam9/chrome-google-keep-full-screen/issues)

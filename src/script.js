@@ -8,7 +8,7 @@ var main = {
     SELECTOR_NOTE_MENU: '',
 
     interval: null,
-    fullscreen: true,
+    fullscreen: true, // Default - full screen enabled
     note: null,
 
     elMenu: null,
@@ -35,11 +35,16 @@ var main = {
         var elNote = document.querySelector(main.SELECTOR_OPEN_NOTE);
         if (elNote) {
 
+            main.elContainer = document.querySelector(main.SELECTOR_OPEN_NOTE_CONTAINER);
+
             // Initialize container if needed
-            if (main.elContainer === null) {
-                main.elContainer = document.querySelector(main.SELECTOR_OPEN_NOTE_CONTAINER);
-                // Default - full screen enabled
-                main.elContainer.classList.add('gkfs-fullscreen');
+            if (! main.elContainer.classList.contains('gkfs-initialized')) {
+
+                main.elContainer.classList.add('gkfs-initialized');
+
+                if (main.fullscreen) {
+                    main.elContainer.classList.add('gkfs-fullscreen');
+                }
             }
 
             if (elNote.dataset.hasOwnProperty('gkfs') && elNote.dataset.gkfs) {
@@ -101,9 +106,9 @@ var Note = function (el, elContainer) {
         "INgbqf-LgbsSe",
         "VIpgJd-LgbsSe"
     );
-    if (main.fullscreen) {
-        elBtnToggle.classList.add("active");
-    }
+
+    elBtnToggle.classList.toggle("active", main.fullscreen);
+
     elBtnMore.insertAdjacentElement('beforebegin', elBtnToggle);
 
     // Set up properties
@@ -116,6 +121,8 @@ var Note = function (el, elContainer) {
         inst.elContainer.classList.toggle('gkfs-fullscreen');
         var active = inst.elContainer.classList.contains('gkfs-fullscreen');
         let elBtns = document.querySelectorAll('.gkfs-toggle');
+
+        main.fullscreen = ! main.fullscreen;
 
         elBtns.forEach(elBtn => {
             elBtn.classList.toggle('active', active);
