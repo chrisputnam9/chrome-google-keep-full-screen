@@ -5,6 +5,9 @@
 ## Warning
 Use this extension at your own risk. It shouldn't cause problems, but I can't make any guarantees, so back up critical notes.
 
+## Note
+This extension only works with the web version of Google Keep (eg. https://keep.google.com/keep/) - it won't work with the "app" version (the one you might install and launch from your app menu in Chrome, especially for offline use).
+
 ## Demo
 ![Google Keep Full Screen Screenshot](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/images/demo.gif)
 
