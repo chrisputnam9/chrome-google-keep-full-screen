@@ -15,7 +15,7 @@ var main = {
     elContainer: null,
 
     init: function () {
-        this.SELECTOR_OPEN_NOTE_CONTAINER = '.VIpgJd-TUo6Hb.XKSfm-L9AdLc.eo9XGd .IZ65Hb-n0tgWb';
+        this.SELECTOR_OPEN_NOTE_CONTAINER = '.IZ65Hb-n0tgWb.IZ65Hb-QQhtn';
         this.SELECTOR_OPEN_NOTE = this.SELECTOR_OPEN_NOTE_CONTAINER + ' .IZ65Hb-TBnied';
         this.SELECTOR_OPEN_NOTE_TOOLBAR = this.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
         this.SELECTOR_NOTE_MENU = '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ';
@@ -47,8 +47,9 @@ var main = {
                 }
             }
 
-            if (elNote.dataset.hasOwnProperty('gkfs') && elNote.dataset.gkfs) {
-                main.note = elNote.dataset.gkfs;
+            if (elNote.hasOwnProperty('gkfs') && elNote.gkfs) {
+                main.note = elNote.gkfs;
+                main.note.toggle_fullscreen(main.fullscreen);
             } else {
                 main.note  = new Note(elNote, main.elContainer);
             }
@@ -86,7 +87,7 @@ var main = {
 var Note = function (el, elContainer) {
 
     // Mark element init in progress
-    el.dataset.gkfs = 1;
+    el.gkfs = 1;
 
     var inst = this,
         elToolbar = el.querySelector(main.SELECTOR_OPEN_NOTE_TOOLBAR),
@@ -117,23 +118,34 @@ var Note = function (el, elContainer) {
     inst.elBtnToggle = elBtnToggle;
 
     // Set up methods
-    inst.toggle_fullscreen = function (event) {
-        inst.elContainer.classList.toggle('gkfs-fullscreen');
+    inst.toggle_fullscreen = function (event_or_state) {
+        
+        if (event_or_state === true || event_or_state === false) {
+            console.log("Setting fullscreen to: " + event_or_state);
+            inst.elContainer.classList.toggle('gkfs-fullscreen', event_or_state);
+        } else {
+            console.log("Toggling fullscreen");
+            inst.elContainer.classList.toggle('gkfs-fullscreen');
+        }
+
         var active = inst.elContainer.classList.contains('gkfs-fullscreen');
         let elBtns = document.querySelectorAll('.gkfs-toggle');
 
-        main.fullscreen = ! main.fullscreen;
+        main.fullscreen = active;
 
         elBtns.forEach(elBtn => {
             elBtn.classList.toggle('active', active);
         });
     };
 
+    inst.update_buttons = function () {
+    }
+
     // Event listener, now that it's defined
     elBtnToggle.addEventListener('click', inst.toggle_fullscreen);
 
     // Fully initialized, set instance on element data
-    inst.el.dataset.gkfs = inst;
+    inst.el.gkfs = inst;
 };
 
 main.init();
