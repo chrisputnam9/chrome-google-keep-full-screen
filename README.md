@@ -8,7 +8,11 @@ Use this extension at your own risk. It shouldn't cause problems, but I can't ma
 ## Note
 This extension only works with the web version of Google Keep (eg. https://keep.google.com/keep/) - it won't work with the "app" version (the one you might install and launch from your app menu in Chrome, especially for offline use).
 
-## Demo
+## Instructions
+Fullscreen is enabled by default when you install the extension.  As of 1.1.1, fullscreen is
+supported for creating new notes in addition to editing notes.  Use the icon to toggle fullscreen on and off as needed.
+
+### Demo
 ![Google Keep Full Screen Screenshot](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/images/demo.gif)
 
 ## Installation
