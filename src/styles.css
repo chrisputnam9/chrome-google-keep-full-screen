@@ -1,35 +1,36 @@
 /* Note */
-.IZ65Hb-n0tgWb.gkfs-fullscreen .IZ65Hb-TBnied {
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-TBnied {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    z-index: 1000;
 }
 
 /* Note Content */
-.IZ65Hb-n0tgWb.gkfs-fullscreen .IZ65Hb-s2gQvd {
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-s2gQvd {
     height: 100% !important;
     max-height: calc(100% - 40px) !important; /* span content-area over whole note, minus the bottom toolbar */
 }
 
 /* Toolbar */
-.IZ65Hb-n0tgWb.gkfs-fullscreen .IZ65Hb-TBnied .IZ65Hb-yePe5c {
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-TBnied .IZ65Hb-yePe5c {
     position: absolute;
     bottom: 0;
     width: 100%;
 }
 
 /* Alerts - show over toolbar */
-.IZ65Hb-n0tgWb.gkfs-fullscreen .Ng57nc.EfADOe.ti6hGc {
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .Ng57nc.EfADOe.ti6hGc {
     position: relative;
 }
 
 /* Fullscreen Toggle Button */
-.IZ65Hb-n0tgWb .IZ65Hb-TBnied .IZ65Hb-yePe5c .gkfs-toggle {
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn .IZ65Hb-TBnied .IZ65Hb-yePe5c .gkfs-toggle {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEUAAAAzMzPI8eYgAAAAAXRSTlMAQObYZgAAACZJREFUeAFjAIFRwP//PwPD//8faM4BU/yDjjPMwGAOa3qmt1EAAJi6f4Gal950AAAAAElFTkSuQmCC);
 }
-.IZ65Hb-n0tgWb .IZ65Hb-TBnied .IZ65Hb-yePe5c .gkfs-toggle.active {
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn .IZ65Hb-TBnied .IZ65Hb-yePe5c .gkfs-toggle.active {
     background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgAQMAAADYVuV7AAAABlBMVEUAAAAzMzPI8eYgAAAAAXRSTlMAQObYZgAAACNJREFUeAFjgIBR8B+IBieH/z+I8/8DLTnDCtAv3AZ72hkFAK3Sf4Hpvgm3AAAAAElFTkSuQmCC);
 }
 
