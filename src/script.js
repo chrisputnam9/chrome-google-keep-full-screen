@@ -7,7 +7,6 @@ var main = {
     SELECTOR_OPEN_NOTE_TOOLBAR: '',
     SELECTOR_NOTE_MENU: '',
 
-    interval: null,
     fullscreen: true, // Default - full screen enabled
     note: null,
 
@@ -20,15 +19,13 @@ var main = {
         this.SELECTOR_OPEN_NOTE_TOOLBAR = this.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
         this.SELECTOR_NOTE_MENU = '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ';
 
-        // TODO set a better way to do this - eg. mutation observer?
-        this.interval = window.setInterval(this.tick, 250);
-    },
-
-    tick: function () {
         main.checkForOpenNote();
-        if (!main.elMenu) {
-            main.initMenu();
-        }
+        main.initMenu();
+
+        window.addEventListener('hashchange', function() {
+            console.log('hashchange');
+            main.checkForOpenNote();
+        });
     },
 
     checkForOpenNote: function () {
@@ -148,4 +145,7 @@ var Note = function (el, elContainer) {
     inst.el.gkfs = inst;
 };
 
-main.init();
+window.addEventListener('load', (event) => {
+    console.log('window loaded');
+    main.init();
+});
