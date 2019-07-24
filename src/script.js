@@ -22,6 +22,23 @@ var main = {
         main.checkForOpenNote();
         main.initMenu();
 
+        // TODO
+        // 1. Get all notes on screen, initialize with mutation observing attributes and mark as initialized
+        // 2. Get note container, listen for childlist to change
+        //  - when child list changes, re-run 1.
+
+        // Listen for new notes
+        var targetNode = document.querySelector("#someElement");
+        var observerOptions = {
+            childList: true,
+            attributes: true,
+            subtree: true //Omit or set to false to observe only changes to the parent node.
+        }
+
+        var observer = new MutationObserver(callback);
+        observer.observe(targetNode, observerOptions);
+
+        // not working for some reason...
         window.addEventListener('hashchange', function() {
             console.log('hashchange');
             main.checkForOpenNote();
