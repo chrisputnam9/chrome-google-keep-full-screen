@@ -2,6 +2,7 @@
 
 var main = {
 
+    SELECTOR_NOTE_CONTAINER: '',
     SELECTOR_OPEN_NOTE_CONTAINER: '',
     SELECTOR_OPEN_NOTE: '',
     SELECTOR_OPEN_NOTE_TOOLBAR: '',
@@ -14,7 +15,8 @@ var main = {
     elContainer: null,
 
     init: function () {
-        this.SELECTOR_OPEN_NOTE_CONTAINER = '.IZ65Hb-n0tgWb.IZ65Hb-QQhtn';
+        this.SELECTOR_NOTE_CONTAINER = '.IZ65Hb-n0tgWb';
+        this.SELECTOR_OPEN_NOTE_CONTAINER = this.SELECTOR_NOTE_CONTAINER + '.IZ65Hb-QQhtn';
         this.SELECTOR_OPEN_NOTE = this.SELECTOR_OPEN_NOTE_CONTAINER + ' .IZ65Hb-TBnied';
         this.SELECTOR_OPEN_NOTE_TOOLBAR = this.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
         this.SELECTOR_NOTE_MENU = '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ';
@@ -22,27 +24,36 @@ var main = {
         main.checkForOpenNote();
         main.initMenu();
 
+        main.initObservers();
+
         // TODO
         // 1. Get all notes on screen, initialize with mutation observing attributes and mark as initialized
         // 2. Get note container, listen for childlist to change
         //  - when child list changes, re-run 1.
+    },
 
-        // Listen for new notes
-        var targetNode = document.querySelector("#someElement");
-        var observerOptions = {
-            childList: true,
-            attributes: true,
-            subtree: true //Omit or set to false to observe only changes to the parent node.
+    initObservers: function () {
+        var elNoteContainers = document.querySelectorAll(main.SELECTOR_NOTE_CONTAINER);
+        if (elNoteContainers) {
+            elNoteContainers.forEach(elNoteContainer => {
+                if (! elNoteContainer.classList.contains('gkfs-observed')) {
+
+                    // Only listen for this specific element's attributes to change
+                    //  - when they do, check for an open note via same old logic
+                    var observer = new MutationObserver(main.checkForOpenNote)
+                        .observe(
+                            elNoteContainer,
+                            {
+                                childList: false,
+                                attributes: true,
+                                subtree: false
+                            }
+                        );
+
+                    elNoteContainer.classList.add('gkfs-observed');
+                }
+            });
         }
-
-        var observer = new MutationObserver(callback);
-        observer.observe(targetNode, observerOptions);
-
-        // not working for some reason...
-        window.addEventListener('hashchange', function() {
-            console.log('hashchange');
-            main.checkForOpenNote();
-        });
     },
 
     checkForOpenNote: function () {
