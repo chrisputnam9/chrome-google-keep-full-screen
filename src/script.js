@@ -2,6 +2,7 @@
 
 var main = {
 
+    SELECTOR_CREATED_NOTES_GROUP_CONTAINER: '',
     SELECTOR_NOTE_CONTAINER: '',
     SELECTOR_OPEN_NOTE_CONTAINER: '',
     SELECTOR_OPEN_NOTE: '',
@@ -15,6 +16,7 @@ var main = {
     elContainer: null,
 
     init: function () {
+        this.SELECTOR_CREATED_NOTES_GROUP_CONTAINER = '.gkA7Yd-sKfxWe.ma6Yeb-r8s4j-gkA7Yd>div';
         this.SELECTOR_NOTE_CONTAINER = '.IZ65Hb-n0tgWb';
         this.SELECTOR_OPEN_NOTE_CONTAINER = this.SELECTOR_NOTE_CONTAINER + '.IZ65Hb-QQhtn';
         this.SELECTOR_OPEN_NOTE = this.SELECTOR_OPEN_NOTE_CONTAINER + ' .IZ65Hb-TBnied';
@@ -24,15 +26,22 @@ var main = {
         main.checkForOpenNote();
         main.initMenu();
 
-        main.initObservers();
+        main.initNoteObservers();
 
-        // TODO
-        // 1. Get all notes on screen, initialize with mutation observing attributes and mark as initialized
-        // 2. Get note container, listen for childlist to change
-        //  - when child list changes, re-run 1.
+        // Observe note group container for added/removed children
+        var elCreatedNotesGroupContainer = document.querySelector(this.SELECTOR_CREATED_NOTES_GROUP_CONTAINER),
+            observer = new MutationObserver(main.initNoteObservers)
+                .observe(
+                    elCreatedNotesGroupContainer,
+                    {
+                        childList: true,
+                        attributes: false,
+                        subtree: false
+                    }
+                );
     },
 
-    initObservers: function () {
+    initNoteObservers: function () {
         var elNoteContainers = document.querySelectorAll(main.SELECTOR_NOTE_CONTAINER);
         if (elNoteContainers) {
             elNoteContainers.forEach(elNoteContainer => {
@@ -40,6 +49,7 @@ var main = {
 
                     // Only listen for this specific element's attributes to change
                     //  - when they do, check for an open note via same old logic
+                    console.log('new MutationObserver for note');
                     var observer = new MutationObserver(main.checkForOpenNote)
                         .observe(
                             elNoteContainer,
@@ -57,6 +67,7 @@ var main = {
     },
 
     checkForOpenNote: function () {
+        console.log('checkForOpenNote');
         var elNote = document.querySelector(main.SELECTOR_OPEN_NOTE);
         if (elNote) {
 
@@ -174,6 +185,5 @@ var Note = function (el, elContainer) {
 };
 
 window.addEventListener('load', (event) => {
-    console.log('window loaded');
     main.init();
 });
