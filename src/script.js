@@ -39,6 +39,9 @@ var main = {
                         subtree: false
                     }
                 );
+
+        // Listen for popstate - triggered by forward and back buttons, and manual hash entry
+        window.addEventListener('popstate', main.checkForOpenNote);
     },
 
     initNoteObservers: function () {
