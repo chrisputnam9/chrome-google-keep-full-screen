@@ -29,16 +29,17 @@ var main = {
         main.initNoteObservers();
 
         // Observe note group container for added/removed children
-        var elCreatedNotesGroupContainer = document.querySelector(this.SELECTOR_CREATED_NOTES_GROUP_CONTAINER),
-            observer = new MutationObserver(main.initNoteObservers)
-                .observe(
-                    elCreatedNotesGroupContainer,
-                    {
-                        childList: true,
-                        attributes: false,
-                        subtree: false
-                    }
-                );
+        var elCreatedNotesGroupContainer = document.querySelector(this.SELECTOR_CREATED_NOTES_GROUP_CONTAINER);
+
+        new MutationObserver(main.initNoteObservers)
+            .observe(
+                elCreatedNotesGroupContainer,
+                {
+                    childList: true,
+                    attributes: false,
+                    subtree: false
+                }
+            );
 
         // Listen for popstate - triggered by forward and back buttons, and manual hash entry
         window.addEventListener('popstate', main.checkForOpenNote);
@@ -53,7 +54,7 @@ var main = {
                     // Only listen for this specific element's attributes to change
                     //  - when they do, check for an open note via same old logic
                     console.log('new MutationObserver for note');
-                    var observer = new MutationObserver(main.checkForOpenNote)
+                    new MutationObserver(main.checkForOpenNote)
                         .observe(
                             elNoteContainer,
                             {
