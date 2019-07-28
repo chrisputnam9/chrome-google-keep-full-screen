@@ -2,12 +2,13 @@
 
 var main = {
 
+    SELECTOR_CREATED_NOTES_GROUP_CONTAINER: '',
+    SELECTOR_NOTE_CONTAINER: '',
     SELECTOR_OPEN_NOTE_CONTAINER: '',
     SELECTOR_OPEN_NOTE: '',
     SELECTOR_OPEN_NOTE_TOOLBAR: '',
     SELECTOR_NOTE_MENU: '',
 
-    interval: null,
     fullscreen: true, // Default - full screen enabled
     note: null,
 
@@ -15,23 +16,62 @@ var main = {
     elContainer: null,
 
     init: function () {
-        this.SELECTOR_OPEN_NOTE_CONTAINER = '.IZ65Hb-n0tgWb.IZ65Hb-QQhtn';
+        this.SELECTOR_CREATED_NOTES_GROUP_CONTAINER = '.gkA7Yd-sKfxWe.ma6Yeb-r8s4j-gkA7Yd>div';
+        this.SELECTOR_NOTE_CONTAINER = '.IZ65Hb-n0tgWb';
+        this.SELECTOR_OPEN_NOTE_CONTAINER = this.SELECTOR_NOTE_CONTAINER + '.IZ65Hb-QQhtn';
         this.SELECTOR_OPEN_NOTE = this.SELECTOR_OPEN_NOTE_CONTAINER + ' .IZ65Hb-TBnied';
         this.SELECTOR_OPEN_NOTE_TOOLBAR = this.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
         this.SELECTOR_NOTE_MENU = '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ';
 
-        // TODO set a better way to do this - eg. mutation observer?
-        this.interval = window.setInterval(this.tick, 250);
+        main.checkForOpenNote();
+        main.initMenu();
+
+        main.initNoteObservers();
+
+        // Observe note group container for added/removed children
+        var elCreatedNotesGroupContainer = document.querySelector(this.SELECTOR_CREATED_NOTES_GROUP_CONTAINER);
+
+        new MutationObserver(main.initNoteObservers)
+            .observe(
+                elCreatedNotesGroupContainer,
+                {
+                    childList: true,
+                    attributes: false,
+                    subtree: false
+                }
+            );
+
+        // Listen for popstate - triggered by forward and back buttons, and manual hash entry
+        window.addEventListener('popstate', main.checkForOpenNote);
     },
 
-    tick: function () {
-        main.checkForOpenNote();
-        if (!main.elMenu) {
-            main.initMenu();
+    initNoteObservers: function () {
+        var elNoteContainers = document.querySelectorAll(main.SELECTOR_NOTE_CONTAINER);
+        if (elNoteContainers) {
+            elNoteContainers.forEach(elNoteContainer => {
+                if (! elNoteContainer.classList.contains('gkfs-observed')) {
+
+                    // Only listen for this specific element's attributes to change
+                    //  - when they do, check for an open note via same old logic
+                    console.log('new MutationObserver for note');
+                    new MutationObserver(main.checkForOpenNote)
+                        .observe(
+                            elNoteContainer,
+                            {
+                                childList: false,
+                                attributes: true,
+                                subtree: false
+                            }
+                        );
+
+                    elNoteContainer.classList.add('gkfs-observed');
+                }
+            });
         }
     },
 
     checkForOpenNote: function () {
+        console.log('checkForOpenNote');
         var elNote = document.querySelector(main.SELECTOR_OPEN_NOTE);
         if (elNote) {
 
@@ -148,4 +188,6 @@ var Note = function (el, elContainer) {
     inst.el.gkfs = inst;
 };
 
-main.init();
+window.addEventListener('load', (event) => {
+    main.init();
+});
