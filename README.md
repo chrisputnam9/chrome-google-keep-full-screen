@@ -29,6 +29,10 @@ This is useful if you want to change the extension or use it as an example to cr
  6. You can modify the extension, save changes, then refresh **chrome://extensions** page to have
     them take effect.
 
+## Like the Extension?
+[Rate or review it
+here](https://chrome.google.com/webstore/detail/google-keep-full-screen-e/kcfmkpjpemonceecfpgamaahlkfpjhdk/reviews) to help others find it!
+
 ## Issues?
 Found a bug? Have a suggestion?
 
