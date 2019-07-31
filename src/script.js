@@ -81,7 +81,7 @@ var main = {
 
                     // Only listen for this specific element's attributes to change
                     //  - when they do, check for an open note via same old logic
-                    console.log('New note seen - observing it for attribute changes');
+                    // console.log('New note seen - observing it for attribute changes');
                     main.observerNoteChanges.observe(
                             elNoteContainer,
                             {
@@ -98,20 +98,20 @@ var main = {
     },
 
     checkForDarkMode: function () {
-        console.log('checkForDarkMode');
+        // console.log('checkForDarkMode');
         var elBody = document.querySelector('body'),
             bodyStyles = getComputedStyle(elBody),
             backgroundColor = bodyStyles['background-color'],
             darkMode = (backgroundColor != "rgb(255, 255, 255)");
 
-        console.log('Background-color: ' + backgroundColor);
-        console.log('DarkMode: ' + darkMode);
+        // console.log('Background-color: ' + backgroundColor);
+        // console.log('DarkMode: ' + darkMode);
 
         elBody.classList.toggle('gkfs-dark-mode', darkMode);
     },
 
     checkForOpenNote: function () {
-        console.log('attribute on note changed, or user change url - checkForOpenNote');
+        // console.log('attribute on note changed, or user change url - checkForOpenNote');
         var elNote = document.querySelector(main.SELECTOR_OPEN_NOTE);
         if (elNote) {
 
@@ -137,7 +137,7 @@ var main = {
     },
 
     initMenu: function () {
-        console.log('initMenu');
+        // console.log('initMenu');
         this.elMenu = document.querySelector(this.SELECTOR_NOTE_MENU);
         if (this.elMenu) {
             var elBtnHelpCnt = document.createElement('div'),
@@ -202,10 +202,10 @@ var Note = function (el, elContainer) {
     inst.toggle_fullscreen = function (event_or_state) {
         
         if (event_or_state === true || event_or_state === false) {
-            console.log("Setting fullscreen to: " + event_or_state);
+            // console.log("Setting fullscreen to: " + event_or_state);
             inst.elContainer.classList.toggle('gkfs-fullscreen', event_or_state);
         } else {
-            console.log("Toggling fullscreen");
+            // console.log("Toggling fullscreen");
             inst.elContainer.classList.toggle('gkfs-fullscreen');
         }
 
