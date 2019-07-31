@@ -26,11 +26,20 @@ var main = {
         this.SELECTOR_OPEN_NOTE_TOOLBAR = this.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
         this.SELECTOR_NOTE_MENU = '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ';
 
+        // Initial Setup
         main.observerNoteChanges = new MutationObserver(main.checkForOpenNote)
         main.observerNewNotes = new MutationObserver(main.initNoteObservers);
 
+        main.checkForDarkMode();
         main.checkForOpenNote();
-        main.initMenu();
+
+        // In Dark Mode, menu seems to behave a little differently
+        // Delay seems necessary to render it correctly
+        window.setTimeout( () => {
+            main.initMenu();
+        } , 3000);
+
+        // Observe existing notes on load for open/close
         main.initNoteObservers();
 
         // Observe note group container for added/removed children
@@ -48,6 +57,20 @@ var main = {
 
         // Listen for popstate - triggered by forward and back buttons, and manual hash entry
         window.addEventListener('popstate', main.checkForOpenNote);
+
+
+        // Listen for child change in head (eg. script swap for normal/dark mode)
+        // - check whether to toggle dark mode class, based on body style
+        var elHead = document.querySelector('head');
+        new MutationObserver(main.checkForDarkMode)
+            .observe(
+                elHead,
+                {
+                    childList: true,
+                    attributes: false,
+                    subtree: false
+                }
+            );
     },
 
     initNoteObservers: function () {
@@ -72,6 +95,19 @@ var main = {
                 }
             });
         }
+    },
+
+    checkForDarkMode: function () {
+        console.log('checkForDarkMode');
+        var elBody = document.querySelector('body'),
+            bodyStyles = getComputedStyle(elBody),
+            backgroundColor = bodyStyles['background-color'],
+            darkMode = (backgroundColor != "rgb(255, 255, 255)");
+
+        console.log('Background-color: ' + backgroundColor);
+        console.log('DarkMode: ' + darkMode);
+
+        elBody.classList.toggle('gkfs-dark-mode', darkMode);
     },
 
     checkForOpenNote: function () {
@@ -101,6 +137,7 @@ var main = {
     },
 
     initMenu: function () {
+        console.log('initMenu');
         this.elMenu = document.querySelector(this.SELECTOR_NOTE_MENU);
         if (this.elMenu) {
             var elBtnHelpCnt = document.createElement('div'),
