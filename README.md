@@ -20,7 +20,10 @@ supported for creating new notes in addition to editing notes.  Use the icon at 
 ![Google Keep Full Screen Screenshot](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/images/demo_1.2.1.gif)
 
 ## Installation
-The simplest method is to install from the [Chrome Web Store](https://chrome.google.com/webstore/detail/kcfmkpjpemonceecfpgamaahlkfpjhdk).
+The simplest method is to install from the extension or add-on page for your browser:
+ - [Chrome](https://chrome.google.com/webstore/detail/kcfmkpjpemonceecfpgamaahlkfpjhdk)
+ - [Edge](https://microsoftedge.microsoft.com/addons/detail/google-keep-full-screen/mfbggeknlmaadiommcbkidgofgkmdakf)
+ - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/google-keep-full-screen-edit/)
 
 ## Manual Installation
 This is useful if you want to change the extension or use it as an example to create your own.
