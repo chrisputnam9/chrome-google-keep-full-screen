@@ -1,4 +1,4 @@
-# Google Keep - Full Screen - Chrome Extension
+# Google Keep - Full Screen - Browser Extension
 
 ## Latest Version: 1.2.1
  - Allows Google Keep editing to use the full browser window.
@@ -37,8 +37,10 @@ This is useful if you want to change the extension or use it as an example to cr
     them take effect.
 
 ## Like the Extension?
-[Rate or review it
-here](https://chrome.google.com/webstore/detail/google-keep-full-screen-e/kcfmkpjpemonceecfpgamaahlkfpjhdk/reviews) to help others find it!
+Rate or review it on the extension page for your browser!
+ - [Chrome](https://chrome.google.com/webstore/detail/kcfmkpjpemonceecfpgamaahlkfpjhdk)
+ - [Edge](https://microsoftedge.microsoft.com/addons/detail/google-keep-full-screen/mfbggeknlmaadiommcbkidgofgkmdakf)
+ - [Firefox](https://addons.mozilla.org/en-US/firefox/addon/google-keep-full-screen-edit/)
 
 ## Issues?
 Found a bug? Have a suggestion?
