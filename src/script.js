@@ -37,10 +37,10 @@ const main = {
 		main.checkForDarkMode();
 		main.checkForOpenNote();
 
-		// TODO promisify the chrome.storage.sync set & get
-		const settings = await chrome.storage.sync.get( [ 'settings' ] );
-		if ( 'fullscreen' in settings ) {
-			this.fullscreen = settings.fullscreen;
+		const storage = await promise_chrome_storage_sync_get( [ 'settings' ] );
+
+		if ( 'settings' in storage && 'fullscreen' in storage.settings ) {
+			this.fullscreen = storage.settings.fullscreen;
 		}
 
 		// In Dark Mode, menu seems to behave a little differently
@@ -89,9 +89,10 @@ const main = {
 
 	/** Sync settings with storage **/
 	syncSettings: async function () {
-		// TODO promisify the chrome.storage.sync set & get
-		return await chrome.storage.sync.set( {
-			fullscreen: this.fullscreen,
+		return await promise_chrome_storage_sync_set( {
+			settings: {
+				fullscreen: this.fullscreen,
+			},
 		} );
 	},
 
@@ -248,6 +249,29 @@ const Note = function ( el, elContainer ) {
 	// Fully initialized, set instance on element data
 	inst.el.gkfs = inst;
 };
+
+/** Promisified Chrome API methods **/
+function promise_chrome_storage_sync_set( data ) {
+	return new Promise( ( resolve, reject ) => {
+		try {
+			console.log( 'Setting:', data );
+			chrome.storage.sync.set( data, resolve );
+		} catch ( error ) {
+			reject( error );
+		}
+	} );
+}
+
+function promise_chrome_storage_sync_get( data ) {
+	return new Promise( ( resolve, reject ) => {
+		try {
+			console.log( 'Getting:', data );
+			chrome.storage.sync.get( data, resolve );
+		} catch ( error ) {
+			reject( error );
+		}
+	} );
+}
 
 window.addEventListener( 'load', () => {
 	main.init();
