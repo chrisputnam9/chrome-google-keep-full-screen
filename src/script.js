@@ -254,7 +254,7 @@ const Note = function ( el, elContainer ) {
 function promise_chrome_storage_sync_set( data ) {
 	return new Promise( ( resolve, reject ) => {
 		try {
-			console.log( 'Setting:', data );
+			// console.log( 'Setting:', data );
 			chrome.storage.sync.set( data, resolve );
 		} catch ( error ) {
 			reject( error );
@@ -265,7 +265,7 @@ function promise_chrome_storage_sync_set( data ) {
 function promise_chrome_storage_sync_get( data ) {
 	return new Promise( ( resolve, reject ) => {
 		try {
-			console.log( 'Getting:', data );
+			// console.log( 'Getting:', data );
 			chrome.storage.sync.get( data, resolve );
 		} catch ( error ) {
 			reject( error );
