@@ -1,8 +1,9 @@
 # Google Keep - Full Screen - Browser Extension
 
-## Latest Version: 1.2.1
+## Latest Version: 1.2.2
  - Allows Google Keep editing to use the full browser window.
  - Allows toggling full screen on and off by clicking on an icon added on the notes.
+ - Remembers full screen status across sessions
  - Supports Dark Mode
 
 ## Warning
