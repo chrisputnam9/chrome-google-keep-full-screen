@@ -3,7 +3,7 @@
 	"short_name": "Google Keep Full Screen",
 	"description": "Makes note editing take up the full browser window",
 	"homepage_url": "https://github.com/chrisputnam9/chrome-google-keep-full-screen",
-	"version": "1.2.2.1",
+	"version": "1.2.2.2",
 	"browser_specific_settings": {
 		"gecko": {
 			"id": "chrome-google-keep-full-screen@cmp.onl"
