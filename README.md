@@ -9,13 +9,14 @@
 ## Warning
 Use this extension at your own risk. It shouldn't cause problems, but I can't make any guarantees, so back up critical notes.
 
-## Note
+## Notes
     1. This extension only works with the web version of Google Keep (eg. https://keep.google.com/keep/) - it won't work with the "app" version (the one you might install and launch from your app menu -ie. for offline use).
     2. At this time, clicking the extension icon itself does not toggle anything - click the full-screen icon added to the note itself to toggle full-screen on and off.
 
 ## Instructions
-Full-screen is enabled by default when you install the extension.  As of 1.1.1, full-screen is
-supported for creating new notes in addition to editing notes.  Use the icon at the bottom of the note to toggle full-screen on and off as needed.
+ - Full-screen is enabled by default when you install the extension.
+ - Use the icon at the bottom of the note to toggle full-screen on and off as needed.
+ - Your selection will be remembered between notes and sessions.
 
 ### Demo
 ![Google Keep Full Screen Screenshot](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/images/demo_1.2.1.gif)
@@ -34,7 +35,7 @@ This is useful if you want to change the extension or use it as an example to cr
  - [Sideload in Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading)
 
 ## Like the Extension?
-Rate or review it on the extension page for your browser!
+Please rate or review it to help others find it!
  - [Reviews for Chrome](https://chrome.google.com/webstore/detail/kcfmkpjpemonceecfpgamaahlkfpjhdk)
  - [Reviews for Edge](https://microsoftedge.microsoft.com/addons/detail/google-keep-full-screen/mfbggeknlmaadiommcbkidgofgkmdakf)
  - [Reviews for Firefox](https://addons.mozilla.org/en-US/firefox/addon/google-keep-full-screen-edit/)
