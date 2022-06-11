@@ -192,7 +192,7 @@ const Note = function ( el, elContainer ) {
 	const inst = this;
 	const elToolbar = el.querySelector( main.SELECTOR_OPEN_NOTE_TOOLBAR );
 	const elBtnMore = elToolbar.querySelector(
-		'div[role="button"][aria-label="More"]'
+		'.Q0hgme-LgbsSe.Q0hgme-Bz112c-LgbsSe.xl07Ob.INgbqf-LgbsSe.VIpgJd-LgbsSe'
 	);
 
 	// Set up toggle button
