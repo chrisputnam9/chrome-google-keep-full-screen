@@ -13,6 +13,8 @@ const main = {
 	elMenu: null,
 	elContainer: null,
 
+	menuInterval: null,
+
 	observerNewNotes: null,
 	observerNoteChanges: null,
 
@@ -43,11 +45,10 @@ const main = {
 			this.fullscreen = storage.settings.fullscreen;
 		}
 
-		// In Dark Mode, menu seems to behave a little differently
-		// Delay seems necessary to render it correctly
-		window.setTimeout( () => {
+		// TODO Change this to a mutation observer
+		this.menuInterval = window.setInterval( () => {
 			main.initMenu();
-		}, 3000 );
+		}, 500 );
 
 		// Observe existing notes on load for open/close
 		main.initNoteObservers();
@@ -158,9 +159,11 @@ const main = {
 	},
 
 	initMenu: function () {
-		// console.log('initMenu');
 		this.elMenu = document.querySelector( this.SELECTOR_NOTE_MENU );
 		if ( this.elMenu ) {
+			// No need to keep running
+			window.clearInterval( this.menuInterval );
+
 			const elBtnHelpCnt = document.createElement( 'div' ),
 				elBtnHelp = document.createElement( 'a' );
 
