@@ -57,7 +57,10 @@ Found a bug? Have a suggestion?
 
 [Submit it here](https://github.com/chrisputnam9/chrome-google-keep-full-screen/issues)
 
-Thanks to all who have contributed reviews, suggestions, bug reports, etc. Special thanks to @MartinLichtblau, @tbrodbeck, @JnLlnd
+Thanks to all who have contributed reviews, suggestions, bug reports, etc. Special thanks to
+[@MartinLichtblau](https://github.com/MartinLichtblau),
+[@tbrodbeck](https://github.com/tbrodbeck),
+[@JnLlnd](https://github.com/JnLlnd)
 
 Developer sustenance funding is welcome, but not expected
 

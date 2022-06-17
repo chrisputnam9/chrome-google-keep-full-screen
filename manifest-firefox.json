@@ -1,9 +1,9 @@
 {
-	"name": "GKFSE - BETA",
-	"short_name": "GKFSE - BETA",
+	"name": "Google Keep - Full Screen Edit",
+	"short_name": "Google Keep Full Screen",
 	"description": "Makes note editing take up the full browser window",
 	"homepage_url": "https://github.com/chrisputnam9/chrome-google-keep-full-screen",
-	"version": "1.2.3.1",
+	"version": "1.2.3",
 	"icons": {
 		"16": "images/icon16.png",
 		"48": "images/icon48.png",
