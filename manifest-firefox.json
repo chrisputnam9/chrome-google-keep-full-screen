@@ -10,16 +10,16 @@
 		"128": "images/icon128.png"
 	},
 
-	"permissions": [ "storage" ],
+	"permissions": ["storage"],
 
-	"host_permissions": [ "*://keep.google.com/*" ],
+	"host_permissions": ["*://keep.google.com/*"],
 
 	"content_scripts": [
 		{
-			"matches": [ "*://keep.google.com/*" ],
-			"css": [ "src/styles.css" ],
-			"js": [ "src/script.js" ],
-			"run_at": "document_end"
+			"matches": ["*://keep.google.com/*"],
+			"css": ["src/styles.css"],
+			"js": ["src/script.js"],
+			"run_at": "document_start"
 		}
 	],
 
