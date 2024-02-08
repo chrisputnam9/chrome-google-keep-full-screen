@@ -1,36 +1,4 @@
 /* global chrome */
-
-// Testing:
-// TODO Finalize this when working as desired
-console.log('Loaded');
-const observer = new MutationObserver((mutations) => {
-	mutations.forEach((mutation) => {
-		if (mutation.addedNodes?.length > 0) {
-			mutation.addedNodes.forEach((node) => {
-				if (node.classList?.contains('JqEhuc')) {
-					console.log(mutation);
-				}
-			});
-			/*
-			const role = mutation.addedNodes[0].role ?? '';
-			if (role === 'button') {
-				console.log(mutation);
-				console.log(mutation.addedNodes[0]);
-			}
-			*/
-		}
-		if (mutation.target?.classList?.contains('JqEhuc')) {
-			console.log(mutation);
-		}
-	});
-});
-observer.observe(document, {
-	childList: true,
-	attributes: true,
-	subtree: true,
-	start: 'document_start',
-});
-
 const main = {
 	SELECTOR_CREATED_NOTES_GROUP_CONTAINER: '',
 	SELECTOR_NOTE_CONTAINER: '',
