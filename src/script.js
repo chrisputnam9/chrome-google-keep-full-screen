@@ -207,9 +207,17 @@ const Note = function (el, elContainer) {
 		'VIpgJd-LgbsSe'
 	);
 
+	// Set up icon span
+	const elIconSpan = document.createElement('span');
+	elIconSpan.classList.add('gkfs-toggle-icon');
+
 	elBtnToggle.classList.toggle('active', main.fullscreen);
 
+	// Add toggle button right before the more button
 	elBtnMore.insertAdjacentElement('beforebegin', elBtnToggle);
+
+	// Add icon span inside the toggle button
+	elBtnToggle.insertAdjacentElement('beforeend', elIconSpan);
 
 	// Set up properties
 	inst.el = el;
