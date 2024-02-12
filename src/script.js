@@ -157,8 +157,13 @@ const main = {
 	},
 
 	initMenu: function () {
-		this.elMenu = document.querySelector(this.SELECTOR_NOTE_MENU);
-		if (this.elMenu) {
+		const elMenus = document.querySelectorAll(main.SELECTOR_NOTE_MENU);
+		console.log(elMenus);
+		if (elMenus.length > 0) {
+			// Get the last menu - this is the main one (vs. an in-note link menu)
+			this.elMenu = elMenus[elMenus.length - 1];
+			console.log(this.elMenu);
+
 			// No need to keep running
 			window.clearInterval(this.menuInterval);
 
@@ -169,7 +174,7 @@ const main = {
 			elBtnHelpCnt.classList.add('gkfs-help-container', 'VIpgJd-j7LFlb');
 
 			elBtnHelp.classList.add('gkfs-help', 'VIpgJd-j7LFlb-bN97Pc');
-			elBtnHelp.innerText = 'Fullscreen Help';
+			elBtnHelp.innerText = 'Fullscreen Info & Help';
 			elBtnHelp.setAttribute(
 				'href',
 				'https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md'
