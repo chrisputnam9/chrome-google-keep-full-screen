@@ -74,6 +74,20 @@ const main = {
 			attributes: false,
 			subtree: false,
 		});
+
+		// Listen for messages
+		chrome.runtime.onMessage.addListener(function (request) {
+			// Handle keyboard shortcuts
+			if (
+				'command' in request &&
+				request.command === 'toggle-fullscreen'
+			) {
+				main.set({ fullscreen: !main.fullscreen });
+				if (main.note) {
+					main.note.toggle_fullscreen();
+				}
+			}
+		});
 	},
 
 	/** Update one or more settings **/
