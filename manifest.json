@@ -10,6 +10,8 @@
 		"128": "images/icon128.png"
 	},
 
+	"options_page": "src/options.html",
+
 	"permissions": ["storage"],
 
 	"host_permissions": ["*://keep.google.com/*"],
