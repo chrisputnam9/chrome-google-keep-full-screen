@@ -15,8 +15,24 @@
 
 			<div class="note-content">
 				<form>
+					<input
+						type="hidden"
+						id="fullscreen"
+						name="fullscreen"
+						value="1"
+					/>
+
 					<p>
-						<label for="note_size">Note Size </label>
+						<label
+							class="info"
+							for="note_size"
+							title="Percentage of screen size (1-100)
+that the note should take up when fullscren is enabled.
+
+Note that width will never drop below 300 pixels,
+and height may adjust to accomodate content."
+							>Size</label
+						>
 						<input
 							type="number"
 							id="note_size"
@@ -28,18 +44,16 @@
 							step="1"
 						/>
 						<span>%</span>
-						<label
-							><small
-								>Percentage of screen size (1-100). Note that
-								width will never drop below 300 pixels, and
-								height will always adjust to accomodate
-								content.</small
-							></label
-						>
 					</p>
 
 					<p>
-						<label for="note_padding">Note Padding</label>
+						<label
+							class="info"
+							for="note_padding"
+							title="Percentage of note size (0-20)
+to pad text inside the note when fullscreen is enabled."
+							>Padding</label
+						>
 						<input
 							type="number"
 							id="note_padding"
@@ -51,16 +65,18 @@
 							step="1"
 						/>
 						<span>%</span>
-						<label
-							><small
-								>Percentage of note size (0-20).</small
-							></label
-						>
 					</p>
 
 					<p>
-						<label for="backdrop_opacity"
-							>Backdrop Opacity Behind Note</label
+						<label
+							class="info"
+							for="backdrop_opacity"
+							title="Percentage (0-100)
+
+How much to hide background (other notes) when fullscreen is enabled.
+
+100 is fully hidden, 0 is fully visible background."
+							>Hide Background</label
 						>
 						<input
 							type="number"
@@ -73,12 +89,10 @@
 							step="1"
 						/>
 						<span>%</span>
-						<label
-							><small
-								>Percentage (0-100) 0 is fully transparent,100
-								is fully opaque</small
-							></label
-						>
+					</p>
+
+					<p>
+						<input type="submit" value="Save & Preview" />
 					</p>
 				</form>
 			</div>
@@ -89,5 +103,7 @@
 		</div>
 		<!-- Options-specific script -->
 		<script src="options/script.js"></script>
+		<!-- Settings listener -->
+		<script src="settings_listener.js"></script>
 	</body>
 </html>

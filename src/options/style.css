@@ -84,9 +84,42 @@ form input {
 	border-radius: 5px;
 	padding: 10px;
 	margin-top: 5px;
-	width: 50px;
+	width: 100px;
+}
+
+form input[type="submit"] {
+	background: var(--color_text_default);
+	color: var(--color_background2);
+	width: 120px;
 }
 
 form p span {
 	font-weight: 600;
+}
+
+form label.info:after {
+	content: "\02139";
+	position: relative;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	font-size: 12px;
+	text-align: center;
+	top: -6px;
+	left: 4px;
+	border-radius: 50%;
+	background: var(--color_text_default);
+	color: var(--color_background2);
+	opacity: 0.5;
+	box-sizing: border-box;
+	padding-top: 1px;
+}
+
+form label:hover,
+form input[type="submit"]:hover {
+	cursor: pointer;
+}
+
+form label.info:hover:after {
+	opacity: 1;
 }
