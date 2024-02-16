@@ -1,3 +1,11 @@
+/** Variables that can be tweaked by settings **/
+:root {
+	/** Settings Variables **/
+	--setting_opacity_backdrop: 0.9;
+	--setting_note_size_percentage: 100%;
+	--setting_note_padding: 5%;
+}
+
 /* Note */
 .IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-TBnied {
 	position: fixed;
