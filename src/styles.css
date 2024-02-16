@@ -1,21 +1,37 @@
 /** Variables that can be tweaked by settings **/
 :root {
 	/** Settings Variables **/
-	--setting_opacity_backdrop: 0.9;
-	--setting_note_size_percentage: 100%;
-	--setting_note_padding: 5%;
+	--setting_backdrop_opacity: 75;
+	--setting_note_size: 100;
+	--setting_note_padding: 1;
 }
 
-/* Note */
+/** Backdrop **/
+.VIpgJd-TUo6Hb-xJ5Hnf.XKSfm-L9AdLc-AHe6Kc.eo9XGd {
+	opacity: calc(var(--setting_backdrop_opacity) / 100);
+}
+
+/* Note - Fullscreen Default */
 .IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-TBnied {
-	position: fixed;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: calc(var(--setting_note_size) * 1%);
+	min-height: calc(var(--setting_note_size) * 1%);
 	z-index: 1000;
 	-webkit-border-radius: 0;
 	border-radius: 0;
+	border-width: 0;
+}
+
+/* Note - Less than 100% fullscreen */
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen.gkfs-fullscreen-custom-size
+	.IZ65Hb-TBnied {
+	border-radius: 7px;
+	border-width: 1px;
+	min-width: 300px;
+	height: auto;
 }
 
 /* Note Content */
