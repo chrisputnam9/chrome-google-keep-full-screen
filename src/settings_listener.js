@@ -26,6 +26,8 @@ chrome.runtime.onMessage.addListener(function (request) {
 	}
 });
 
+chrome.storage.sync.get(data, resolve);
+
 function updateSettings(settings) {
 	document.querySelectorAll('input[name]').forEach((input) => {
 		input.value = settings[input.name];
