@@ -172,11 +172,11 @@ const main = {
 
 	initMenu: function () {
 		const elMenus = document.querySelectorAll(main.SELECTOR_NOTE_MENU);
-		console.log(elMenus);
+		// console.log(elMenus);
 		if (elMenus.length > 0) {
 			// Get the last menu - this is the main one (vs. an in-note link menu)
 			this.elMenu = elMenus[elMenus.length - 1];
-			console.log(this.elMenu);
+			// console.log(this.elMenu);
 
 			// No need to keep running
 			window.clearInterval(this.menuInterval);

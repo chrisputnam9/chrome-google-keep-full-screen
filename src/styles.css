@@ -8,12 +8,12 @@
 
 /** Backdrop **/
 .VIpgJd-TUo6Hb-xJ5Hnf.XKSfm-L9AdLc-AHe6Kc.eo9XGd {
-	opacity: calc(var(--setting_backdrop_opacity) / 100);
+	opacity: calc(var(--setting_backdrop_opacity) / 100) !important;
 }
 
 /* Note - Fullscreen Default */
 .IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-TBnied {
-	position: absolute;
+	position: fixed;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
@@ -28,6 +28,7 @@
 /* Note - Less than 100% fullscreen */
 .IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen.gkfs-fullscreen-custom-size
 	.IZ65Hb-TBnied {
+	position: fixed;
 	border-radius: 7px;
 	border-width: 1px;
 	min-width: 300px;
