@@ -1,9 +1,9 @@
 /** Variables that can be tweaked by settings **/
 :root {
 	/** Settings Variables **/
-	--setting_backdrop_opacity: 75;
 	--setting_note_size: 100;
 	--setting_note_padding: 1;
+	--setting_backdrop_opacity: 75;
 }
 
 /** Backdrop **/
@@ -38,9 +38,8 @@
 /* Note Content */
 .IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-s2gQvd {
 	height: 100% !important;
-	max-height: calc(
-		100% - 40px
-	) !important; /* span content-area over whole note, minus the bottom toolbar */
+	/* span content-area over whole note, minus the bottom toolbar */
+	max-height: calc(100% - 40px) !important;
 }
 
 /* Toolbar */
