@@ -4,9 +4,9 @@
 		<meta charset="UTF-8" />
 		<title>Google Keep Full Screen Edit Options</title>
 		<!-- Options-specific styling -->
-		<link rel="stylesheet" href="options/style.css" />
+		<link rel="stylesheet" href="/src/options/style.css" />
 		<!-- Share stylesheet with fullscreen to see impact -->
-		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="/src/content/styles.css" />
 	</head>
 	<body class="IZ65Hb-n0tgWb IZ65Hb-QQhtn gkfs-fullscreen">
 		<!-- Option container - styled as note -->
@@ -14,7 +14,7 @@
 			<h1>Google Keep Full Screen Edit Options</h1>
 
 			<div class="note-content">
-				<form>
+				<form id="gkfs-options-form">
 					<input
 						type="hidden"
 						id="fullscreen"
@@ -101,9 +101,7 @@ How much to hide background (other notes) when fullscreen is enabled.
 		<div class="VIpgJd-TUo6Hb-xJ5Hnf XKSfm-L9AdLc-AHe6Kc eo9XGd">
 			&nbsp;
 		</div>
-		<!-- Options-specific script -->
-		<script src="options/script.js"></script>
-		<!-- Settings listener -->
-		<script src="settings_data.js"></script>
+		<!-- Options listener -->
+		<script src="/src/shared/options_handler.js"></script>
 	</body>
 </html>

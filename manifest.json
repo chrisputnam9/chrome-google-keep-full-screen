@@ -10,7 +10,7 @@
 		"128": "images/icon128.png"
 	},
 
-	"options_page": "src/options.html",
+	"options_page": "src/options/index.html",
 
 	"permissions": ["storage"],
 
@@ -33,8 +33,8 @@
 	"content_scripts": [
 		{
 			"matches": ["*://keep.google.com/*"],
-			"css": ["src/styles.css"],
-			"js": ["src/content_script.js"],
+			"css": ["src/content/styles.css"],
+			"js": ["src/content/script.js"],
 			"run_at": "document_start"
 		}
 	],
