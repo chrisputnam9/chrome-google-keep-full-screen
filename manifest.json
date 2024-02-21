@@ -34,7 +34,7 @@
 		{
 			"matches": ["*://keep.google.com/*"],
 			"css": ["src/content/styles.css"],
-			"js": ["src/content/script.js"],
+			"js": ["src/content/script.js", "src/shared/options_handler.js"],
 			"run_at": "document_start"
 		}
 	],

@@ -3,9 +3,10 @@ const root = document.querySelector(':root');
 const body = document.querySelector('body');
 
 /* Listen for options form submit and update options */
-document
-	.querySelector('form#gkfs-options-form')
-	.addEventListener('submit', function (event) {
+const optionsForm = document.querySelector('form#gkfs-options-form');
+
+if (optionsForm) {
+	optionsForm.addEventListener('submit', function (event) {
 		event.preventDefault();
 		const options = {};
 		this.querySelectorAll('input[name]').forEach((input) => {
@@ -13,6 +14,7 @@ document
 		});
 		changeOptions(options);
 	});
+}
 
 /* Listen for changes to options */
 chrome.storage.onChanged.addListener(function (changes, area) {
