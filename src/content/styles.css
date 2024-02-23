@@ -26,7 +26,8 @@
 }
 
 /* Note - Less than 100% fullscreen */
-.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen.gkfs-fullscreen-custom-size
+.gkfs-fullscreen-custom-size
+	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen
 	.IZ65Hb-TBnied {
 	position: fixed;
 	border-radius: 7px;
@@ -35,11 +36,21 @@
 	height: auto;
 }
 
+/* Shadow behind Note */
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .VIpgJd-TUo6Hb.XKSfm-L9AdLc.eo9XGd {
+	display: none;
+}
+
 /* Note Content */
 .IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-s2gQvd {
 	height: 100% !important;
 	/* span content-area over whole note, minus the bottom toolbar */
 	max-height: calc(100% - 40px) !important;
+}
+
+/* Tooltip - Edited/Created */
+.IZ65Hb-n0tgWb.IZ65Hb-QQhtn.gkfs-fullscreen .IZ65Hb-jfdpUb-fmcmS {
+	display: none;
 }
 
 /* Toolbar */
