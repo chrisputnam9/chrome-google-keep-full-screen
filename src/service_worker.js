@@ -7,3 +7,13 @@ chrome.commands.onCommand.addListener(function (command) {
 		chrome.tabs.sendMessage(tabs[0].id, { command: command });
 	});
 });
+
+// Listen for messages
+chrome.runtime.onMessage.addListener(function (request) {
+	if (!('action' in request)) {
+		return;
+	}
+	if (request.action === 'open-options') {
+		chrome.runtime.openOptionsPage();
+	}
+});

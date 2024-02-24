@@ -97,6 +97,6 @@ const optionsHandler = {
 	},
 };
 
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
 	optionsHandler.init();
 });

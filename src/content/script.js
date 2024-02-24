@@ -1,15 +1,17 @@
 /* global chrome */
 const main = {
-	SELECTOR_CREATED_NOTES_GROUP_CONTAINER: '',
-	SELECTOR_NOTE_CONTAINER: '',
-	SELECTOR_OPEN_NOTE_CONTAINER: '',
-	SELECTOR_OPEN_NOTE: '',
-	SELECTOR_OPEN_NOTE_TOOLBAR: '',
-	SELECTOR_NOTE_MENU: '',
+	SELECTOR_CREATED_NOTES_GROUP_CONTAINER:
+		'.gkA7Yd-sKfxWe.ma6Yeb-r8s4j-gkA7Yd>div',
+	SELECTOR_NOTE_CONTAINER: '.IZ65Hb-n0tgWb',
+	SELECTOR_OPEN_NOTE_CONTAINER: '', // dynamic
+	SELECTOR_OPEN_NOTE: '', // dynamic
+	SELECTOR_OPEN_NOTE_TOOLBAR: '', // dynamic
+	SELECTOR_NOTE_MENU: '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ',
 
 	fullscreen: true, // Default - full screen enabled
 	note: null,
 
+	elBody: null,
 	elMenu: null,
 	elContainer: null,
 
@@ -19,18 +21,15 @@ const main = {
 	observerNoteChanges: null,
 
 	init: async function () {
-		this.SELECTOR_CREATED_NOTES_GROUP_CONTAINER =
-			'.gkA7Yd-sKfxWe.ma6Yeb-r8s4j-gkA7Yd>div';
-		this.SELECTOR_NOTE_CONTAINER = '.IZ65Hb-n0tgWb';
-		this.SELECTOR_OPEN_NOTE_CONTAINER =
-			this.SELECTOR_NOTE_CONTAINER + '.IZ65Hb-QQhtn';
-		this.SELECTOR_OPEN_NOTE =
-			this.SELECTOR_OPEN_NOTE_CONTAINER + ' .IZ65Hb-TBnied';
-		this.SELECTOR_OPEN_NOTE_TOOLBAR =
-			this.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
-		this.SELECTOR_NOTE_MENU = '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ';
+		main.SELECTOR_OPEN_NOTE_CONTAINER =
+			main.SELECTOR_NOTE_CONTAINER + '.IZ65Hb-QQhtn';
+		main.SELECTOR_OPEN_NOTE =
+			main.SELECTOR_OPEN_NOTE_CONTAINER + ' .IZ65Hb-TBnied';
+		main.SELECTOR_OPEN_NOTE_TOOLBAR =
+			main.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
 
-		// Initial Setup
+		main.elBody = document.querySelector('body');
+
 		main.observerNoteChanges = new MutationObserver(main.checkForOpenNote);
 		main.observerNewNotes = new MutationObserver(main.initNoteObservers);
 
@@ -44,7 +43,7 @@ const main = {
 		}
 
 		// TODO Change this to a mutation observer
-		this.menuInterval = window.setInterval(() => {
+		main.menuInterval = window.setInterval(() => {
 			main.initMenu();
 		}, 500);
 
@@ -157,7 +156,7 @@ const main = {
 				main.elContainer.classList.add('gkfs-initialized');
 
 				if (main.fullscreen) {
-					main.elContainer.classList.add('gkfs-fullscreen');
+					main.elBody.classList.add('gkfs-fullscreen');
 				}
 			}
 
@@ -183,20 +182,40 @@ const main = {
 
 			const elBtnHelpCnt = document.createElement('div'),
 				elBtnHelp = document.createElement('a');
-
 			elBtnHelpCnt.setAttribute('role', 'menuitem');
-			elBtnHelpCnt.classList.add('gkfs-help-container', 'VIpgJd-j7LFlb');
-
-			elBtnHelp.classList.add('gkfs-help', 'VIpgJd-j7LFlb-bN97Pc');
+			elBtnHelpCnt.classList.add(
+				'gkfs-menu-item-container',
+				'VIpgJd-j7LFlb'
+			);
+			elBtnHelp.classList.add('gkfs-menu-item', 'VIpgJd-j7LFlb-bN97Pc');
 			elBtnHelp.innerText = 'Fullscreen Info & Help';
 			elBtnHelp.setAttribute(
 				'href',
 				'https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md'
 			);
 			elBtnHelp.setAttribute('target', '_blank');
-
 			this.elMenu.insertAdjacentElement('beforeend', elBtnHelpCnt);
 			elBtnHelpCnt.insertAdjacentElement('afterbegin', elBtnHelp);
+
+			const elBtnOptionsCnt = document.createElement('div'),
+				elBtnOptions = document.createElement('a');
+			elBtnOptionsCnt.setAttribute('role', 'menuitem');
+			elBtnOptionsCnt.classList.add(
+				'gkfs-menu-item-container',
+				'VIpgJd-j7LFlb'
+			);
+			elBtnOptions.classList.add(
+				'gkfs-menu-item',
+				'VIpgJd-j7LFlb-bN97Pc'
+			);
+			elBtnOptions.innerText = 'Fullscreen Options';
+			elBtnOptions.setAttribute('href', '#');
+			this.elMenu.insertAdjacentElement('beforeend', elBtnOptionsCnt);
+			elBtnOptionsCnt.insertAdjacentElement('afterbegin', elBtnOptions);
+			elBtnOptions.addEventListener('click', function (event) {
+				event.preventDefault();
+				chrome.runtime.sendMessage({ action: 'open-options' });
+			});
 		}
 	},
 };
@@ -247,16 +266,13 @@ const Note = function (el, elContainer) {
 	inst.toggle_fullscreen = function (event_or_state) {
 		if (event_or_state === true || event_or_state === false) {
 			// console.log("Setting fullscreen to: " + event_or_state);
-			inst.elContainer.classList.toggle(
-				'gkfs-fullscreen',
-				event_or_state
-			);
+			main.elBody.classList.toggle('gkfs-fullscreen', event_or_state);
 		} else {
 			// console.log("Toggling fullscreen");
-			inst.elContainer.classList.toggle('gkfs-fullscreen');
+			main.elBody.classList.toggle('gkfs-fullscreen');
 		}
 
-		const active = inst.elContainer.classList.contains('gkfs-fullscreen');
+		const active = main.elBody.classList.contains('gkfs-fullscreen');
 		const elBtns = document.querySelectorAll('.gkfs-toggle');
 
 		main.set({ fullscreen: active });
