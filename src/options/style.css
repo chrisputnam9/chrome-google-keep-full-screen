@@ -18,6 +18,15 @@ body {
 	padding: 0;
 }
 
+a {
+	color: var(--color_text_default);
+	opacity: 0.8;
+}
+a:hover {
+	color: var(--color_text_default);
+	opacity: 1;
+}
+
 body {
 	background-color: var(--color_background1);
 	background-image: var(--image_background);
