@@ -137,10 +137,13 @@ const main = {
 			backgroundColor = bodyStyles['background-color'],
 			darkMode = backgroundColor !== 'rgb(255, 255, 255)';
 
-		// console.log('Background-color: ' + backgroundColor);
-		// console.log('DarkMode: ' + darkMode);
-
 		elBody.classList.toggle('gkfs-dark-mode', darkMode);
+
+		promise_chrome_storage_sync_set({
+			app_selections: {
+				dark_mode: darkMode,
+			},
+		});
 	},
 
 	checkForOpenNote: function () {

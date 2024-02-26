@@ -1,6 +1,17 @@
 :root {
+	/** Color Variables - Light Mode **/
+	--color_backdrop: rgb(32, 33, 36);
+	/*--color_backdrop: rgb(255, 255, 255);*/
+	--color_background1: rgb(255, 255, 255);
+	--color_background2: rgb(255, 255, 255);
+	--color_border1: rgb(200, 200, 200);
+	--color_border2: rgba(200, 200, 200, 0.5);
+	--color_text_default: rgb(32, 33, 36);
+	--image_background: url("../../images/background-image-light.png");
+}
+
+body.gkfs-dark-mode {
 	/** Color Variables - Dark Mode **/
-	/** TODO - based on preference: https://cmp.onl/tncZ **/
 	--color_backdrop: rgb(32, 33, 36);
 	--color_background1: rgb(32, 32, 36);
 	--color_background2: rgb(32, 33, 36);
@@ -49,6 +60,7 @@ body {
 	left: 0;
 }
 
+/** Note **/
 .gkfs-fullscreen .IZ65Hb-n0tgWb.IZ65Hb-QQhtn .IZ65Hb-TBnied {
 	background: var(--color_background2);
 	color: var(--color_text_default);

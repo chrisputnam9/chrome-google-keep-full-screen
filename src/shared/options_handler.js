@@ -28,13 +28,19 @@ const optionsHandler = {
 
 		/* Listen for changes to options */
 		chrome.storage.onChanged.addListener(function (changes, area) {
-			if (area !== 'sync' || !('options' in changes)) {
+			if (area !== 'sync') {
 				return;
 			}
 
-			const options = changes.options.newValue;
+			if ('options' in changes) {
+				const options = changes.options.newValue;
+				self.updateOptionsOnPage(options);
+			}
 
-			self.updateOptionsOnPage(options);
+			if ('app_selections' in changes) {
+				const app_selections = changes.app_selections.newValue;
+				self.updateOptionsOnPage(app_selections);
+			}
 		});
 
 		/* On load, get initial options */
@@ -44,6 +50,15 @@ const optionsHandler = {
 			}
 
 			self.updateOptionsOnPage(data.options);
+		});
+
+		/* On load, get initial options */
+		chrome.storage.sync.get('app_selections', function (data) {
+			if (!('app_selections' in data)) {
+				return;
+			}
+
+			self.updateOptionsOnPage(data.app_selections);
 		});
 	},
 
@@ -55,6 +70,14 @@ const optionsHandler = {
 
 		for (const option_name in options) {
 			const option_value = options[option_name];
+
+			// console.log('Updating option:', option_name, option_value);
+
+			// Toggle dark mode
+			if (option_name === 'dark_mode') {
+				self.body.classList.toggle('gkfs-dark-mode', option_value);
+				return;
+			}
 
 			// Toggle custom size based on note_size
 			if (option_name === 'note_size') {
