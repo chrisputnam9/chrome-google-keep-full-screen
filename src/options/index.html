@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Google Keep Full Screen Edit Options</title>
+		<!-- Options-specific styling -->
+		<link rel="stylesheet" href="/src/options/style.css" />
+		<!-- Share stylesheet with fullscreen to see impact -->
+		<link rel="stylesheet" href="/src/content/styles.css" />
+	</head>
+	<body class="gkfs-fullscreen gkfs-darkmode">
+		<!-- Container to replicate styling -->
+		<div class="IZ65Hb-n0tgWb IZ65Hb-QQhtn">
+			<!-- Option container - styled as note -->
+			<div class="IZ65Hb-TBnied">
+				<div class="IZ65Hb-s2gQvd">
+					<div class="IZ65Hb-r4nke-haAclf">
+						<h1 class="r4nke-YPqjbf">
+							Google Keep Full Screen Edit Options
+						</h1>
+					</div>
+
+					<div class="IZ65Hb-qJTHM-haAclf">
+						<div class="note-content">
+							<form id="gkfs-options-form">
+								<p>
+									<label
+										class="info"
+										for="note_size"
+										title="Percentage of screen size (1-100)
+that the note should take up when fullscren is enabled.
+
+Note that width and height will never drop below minimal values to ensure basic functionality."
+										>Size</label
+									>
+									<input
+										type="number"
+										id="note_size"
+										name="note_size"
+										value="100"
+										placeholder="100"
+										min="1"
+										max="100"
+										step="1"
+										required
+									/>
+									<span>%</span>
+								</p>
+
+								<p>
+									<label
+										class="info"
+										for="note_padding"
+										title="Percentage of note size (0-20)
+to pad (add margin around) note content when fullscreen is enabled."
+										>Padding</label
+									>
+									<input
+										type="number"
+										id="note_padding"
+										name="note_padding"
+										value="0"
+										placeholder="0"
+										min="0"
+										max="20"
+										step="1"
+										required
+									/>
+									<span>%</span>
+								</p>
+
+								<p>
+									<label
+										class="info"
+										for="backdrop_opacity"
+										title="Percentage (0-100)
+
+How much to hide background (other notes) when fullscreen is enabled.
+
+100 is fully hidden, 0 is fully visible background."
+										>Hide Background</label
+									>
+									<input
+										type="number"
+										id="backdrop_opacity"
+										name="backdrop_opacity"
+										value="75"
+										placeholder="75"
+										min="0"
+										max="100"
+										step="1"
+										required
+									/>
+									<span>%</span>
+								</p>
+
+								<p>
+									<input
+										type="submit"
+										value="Save & Preview"
+									/>
+									<input
+										type="reset"
+										value="Reset to Defaults"
+									/>
+								</p>
+
+								<p>
+									<a
+										href="https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md"
+										target="_blank"
+										>Extension Info & Help</a
+									>
+								</p>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<!-- Backdrop -->>
+			<div class="VIpgJd-TUo6Hb-xJ5Hnf XKSfm-L9AdLc-AHe6Kc eo9XGd">
+				&nbsp;
+			</div>
+		</div>
+		<!-- Options listener -->
+		<script src="/src/shared/options_handler.js"></script>
+	</body>
+</html>

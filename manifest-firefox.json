@@ -10,20 +10,36 @@
 		"128": "images/icon128.png"
 	},
 
+	"options_page": "src/options.html",
+
 	"permissions": ["storage"],
 
 	"host_permissions": ["*://keep.google.com/*"],
+
+	"background": {
+		"service_worker": "src/service_worker.js"
+	},
+
+	"commands": {
+		"toggle-fullscreen": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+F",
+				"mac": "Command+Shift+F"
+			},
+			"description": "Toggle full screen editing"
+		}
+	},
 
 	"content_scripts": [
 		{
 			"matches": ["*://keep.google.com/*"],
 			"css": ["src/styles.css"],
-			"js": ["src/script.js"],
+			"js": ["src/content_script.js"],
 			"run_at": "document_start"
 		}
 	],
 
-	"manifest_version": 2,
+	"manifest_version": 3
 
 	"browser_specific_settings": {
 		"gecko": {

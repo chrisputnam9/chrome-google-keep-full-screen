@@ -1,0 +1,152 @@
+:root {
+	/** Color Variables - Light Mode **/
+	--color_backdrop: rgb(32, 33, 36);
+	/*--color_backdrop: rgb(255, 255, 255);*/
+	--color_background1: rgb(255, 255, 255);
+	--color_background2: rgb(255, 255, 255);
+	--color_border1: rgb(200, 200, 200);
+	--color_border2: rgba(200, 200, 200, 0.5);
+	--color_text_default: rgb(32, 33, 36);
+	--image_background: url("../../images/background-image-light.png");
+}
+
+body.gkfs-dark-mode {
+	/** Color Variables - Dark Mode **/
+	--color_backdrop: rgb(32, 33, 36);
+	--color_background1: rgb(32, 32, 36);
+	--color_background2: rgb(32, 33, 36);
+	--color_border1: rgb(94 99 104);
+	--color_border2: rgba(255, 255, 255, 0.15);
+	--color_text_default: rgb(232, 234, 237);
+	--image_background: url("../../images/background-image-dark.png");
+}
+
+html,
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	color: var(--color_text_default);
+	opacity: 0.8;
+}
+a:hover {
+	color: var(--color_text_default);
+	opacity: 1;
+}
+
+body {
+	background-color: var(--color_background1);
+	background-image: var(--image_background);
+	background-size: cover;
+	background-repeat: none;
+	background-attachment: fixed;
+	font-family: Roboto, Arial, sans-serif;
+	font-size: 1rem;
+	font-weight: 400;
+}
+
+/** Backdrop **/
+.VIpgJd-TUo6Hb-xJ5Hnf.XKSfm-L9AdLc-AHe6Kc.eo9XGd {
+	background-color: var(--color_backdrop);
+	position: fixed;
+	transition: opacity 0.218s ease-in 0s;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+}
+
+/** Note **/
+.gkfs-fullscreen .IZ65Hb-n0tgWb.IZ65Hb-QQhtn .IZ65Hb-TBnied {
+	background: var(--color_background2);
+	color: var(--color_text_default);
+	border: 1px solid var(--color_border1);
+	box-sizing: border-box;
+}
+
+h1 {
+	line-height: 1.5rem;
+	font-family: "Google Sans", Roboto, Arial, sans-serif;
+	font-size: 1.375rem;
+	font-weight: 400;
+	margin: 0;
+	padding: 15px;
+}
+
+.note-content {
+	padding: 15px;
+}
+
+.note-content p {
+	margin: 0 0 15px 0;
+}
+
+form label {
+	display: block;
+	width: 100%;
+}
+
+form label small {
+	opacity: 0.6;
+}
+
+form input {
+	background: var(--color_background2);
+	color: var(--color_text_default);
+	font-weight: 600;
+	border: 1px solid var(--color_border2);
+	border-radius: 5px;
+	padding: 10px;
+	margin-top: 5px;
+	width: 100px;
+}
+
+form input[type="submit"] {
+	background: var(--color_text_default);
+	color: var(--color_background2);
+	width: 120px;
+}
+
+form input[type="reset"] {
+	background: var(--color_text_default);
+	color: var(--color_background2);
+	opacity: 0.5;
+	width: 140px;
+}
+
+form p span {
+	font-weight: 600;
+}
+
+form label.info:after {
+	content: "\02139";
+	position: relative;
+	display: inline-block;
+	width: 15px;
+	height: 15px;
+	font-size: 12px;
+	text-align: center;
+	top: -6px;
+	left: 4px;
+	border-radius: 50%;
+	background: var(--color_text_default);
+	color: var(--color_background2);
+	opacity: 0.5;
+	box-sizing: border-box;
+	padding-top: 1px;
+}
+
+form label:hover,
+form input[type="submit"]:hover,
+form input[type="reset"]:hover {
+	opacity: 0.9;
+	cursor: pointer;
+}
+
+form label.info:hover:after {
+	opacity: 1;
+}
