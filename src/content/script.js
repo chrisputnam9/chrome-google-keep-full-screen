@@ -12,11 +12,11 @@ const main = {
 	note: null,
 
 	elBody: null,
-	elMenu: null,
 	elContainer: null,
 
 	menuInterval: null,
 
+	observerMenu: null,
 	observerNewNotes: null,
 	observerNoteChanges: null,
 
@@ -30,11 +30,13 @@ const main = {
 
 		main.elBody = document.querySelector('body');
 
+		main.observerMenu = new MutationObserver(main.maybeInitMenu);
 		main.observerNoteChanges = new MutationObserver(main.checkForOpenNote);
 		main.observerNewNotes = new MutationObserver(main.initNoteObservers);
 
 		main.checkForDarkMode();
 		main.checkForOpenNote();
+		main.maybeInitMenu();
 
 		const storage = await promise_chrome_storage_sync_get(['settings']);
 
@@ -42,10 +44,8 @@ const main = {
 			this.fullscreen = storage.settings.fullscreen;
 		}
 
-		// TODO Change this to a mutation observer
-		main.menuInterval = window.setInterval(() => {
-			main.initMenu();
-		}, 500);
+		// Observe body for menus
+		main.initMenuObservers();
 
 		// Observe existing notes on load for open/close
 		main.initNoteObservers();
@@ -58,8 +58,6 @@ const main = {
 		// Listen for list of notes to change - add/remove or page switch
 		main.observerNewNotes.observe(elCreatedNotesGroupContainer, {
 			childList: true,
-			attributes: false,
-			subtree: false,
 		});
 
 		// Listen for popstate - triggered by forward and back buttons, and manual hash entry
@@ -70,8 +68,6 @@ const main = {
 		const elHead = document.querySelector('head');
 		new MutationObserver(main.checkForDarkMode).observe(elHead, {
 			childList: true,
-			attributes: false,
-			subtree: false,
 		});
 
 		// Listen for messages
@@ -108,6 +104,12 @@ const main = {
 		});
 	},
 
+	initMenuObservers: function () {
+		main.observerMenu.observe(main.elBody, {
+			childList: true,
+		});
+	},
+
 	initNoteObservers: function () {
 		const elNoteContainers = document.querySelectorAll(
 			main.SELECTOR_NOTE_CONTAINER
@@ -117,11 +119,8 @@ const main = {
 				if (!elNoteContainer.classList.contains('gkfs-observed')) {
 					// Only listen for this specific element's attributes to change
 					//  - when they do, check for an open note via same old logic
-					// console.log('New note seen - observing it for attribute changes');
 					main.observerNoteChanges.observe(elNoteContainer, {
-						childList: false,
 						attributes: true,
-						subtree: false,
 					});
 
 					elNoteContainer.classList.add('gkfs-observed');
@@ -131,7 +130,6 @@ const main = {
 	},
 
 	checkForDarkMode: function () {
-		// console.log('checkForDarkMode');
 		const elBody = document.querySelector('body'),
 			bodyStyles = getComputedStyle(elBody),
 			backgroundColor = bodyStyles['background-color'],
@@ -147,7 +145,6 @@ const main = {
 	},
 
 	checkForOpenNote: function () {
-		// console.log('attribute on note changed, or user change url - checkForOpenNote');
 		const elNote = document.querySelector(main.SELECTOR_OPEN_NOTE);
 		if (elNote) {
 			main.elContainer = document.querySelector(
@@ -172,17 +169,20 @@ const main = {
 		}
 	},
 
-	initMenu: function () {
+	maybeInitMenu: function () {
 		const elMenus = document.querySelectorAll(main.SELECTOR_NOTE_MENU);
-		// console.log(elMenus);
-		if (elMenus.length > 0) {
-			// Get the last menu - this is the main one (vs. an in-note link menu)
-			this.elMenu = elMenus[elMenus.length - 1];
-			// console.log(this.elMenu);
 
-			// No need to keep running
-			window.clearInterval(this.menuInterval);
+		elMenus.forEach(function (elMenu) {
+			if (
+				// Make sure it's one of the menus we care about
+				!elMenu.querySelector('[id=":16"], [id=":1"]') ||
+				// Skip if we already hit this menu
+				elMenu.classList.contains('gkfs-menu-initialized')
+			) {
+				return;
+			}
 
+			// Add the help button
 			const elBtnHelpCnt = document.createElement('div'),
 				elBtnHelp = document.createElement('a');
 			elBtnHelpCnt.setAttribute('role', 'menuitem');
@@ -197,9 +197,10 @@ const main = {
 				'https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md'
 			);
 			elBtnHelp.setAttribute('target', '_blank');
-			this.elMenu.insertAdjacentElement('beforeend', elBtnHelpCnt);
+			elMenu.insertAdjacentElement('beforeend', elBtnHelpCnt);
 			elBtnHelpCnt.insertAdjacentElement('afterbegin', elBtnHelp);
 
+			// Add the options button
 			const elBtnOptionsCnt = document.createElement('div'),
 				elBtnOptions = document.createElement('a');
 			elBtnOptionsCnt.setAttribute('role', 'menuitem');
@@ -213,13 +214,16 @@ const main = {
 			);
 			elBtnOptions.innerText = 'Fullscreen Options';
 			elBtnOptions.setAttribute('href', '#');
-			this.elMenu.insertAdjacentElement('beforeend', elBtnOptionsCnt);
+			elMenu.insertAdjacentElement('beforeend', elBtnOptionsCnt);
 			elBtnOptionsCnt.insertAdjacentElement('afterbegin', elBtnOptions);
 			elBtnOptions.addEventListener('click', function (event) {
 				event.preventDefault();
 				chrome.runtime.sendMessage({ action: 'open-options' });
 			});
-		}
+
+			// Mark as initialized
+			elMenu.classList.add('gkfs-menu-initialized');
+		});
 	},
 };
 
@@ -268,10 +272,8 @@ const Note = function (el, elContainer) {
 	// Set up methods
 	inst.toggle_fullscreen = function (event_or_state) {
 		if (event_or_state === true || event_or_state === false) {
-			// console.log("Setting fullscreen to: " + event_or_state);
 			main.elBody.classList.toggle('gkfs-fullscreen', event_or_state);
 		} else {
-			// console.log("Toggling fullscreen");
 			main.elBody.classList.toggle('gkfs-fullscreen');
 		}
 
@@ -298,7 +300,6 @@ const Note = function (el, elContainer) {
 function promise_chrome_storage_sync_set(data) {
 	return new Promise((resolve, reject) => {
 		try {
-			// console.log( 'Setting:', data );
 			chrome.storage.sync.set(data, resolve);
 		} catch (error) {
 			reject(error);
@@ -309,7 +310,6 @@ function promise_chrome_storage_sync_set(data) {
 function promise_chrome_storage_sync_get(data) {
 	return new Promise((resolve, reject) => {
 		try {
-			// console.log( 'Getting:', data );
 			chrome.storage.sync.get(data, resolve);
 		} catch (error) {
 			reject(error);
