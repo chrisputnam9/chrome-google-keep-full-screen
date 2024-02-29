@@ -182,41 +182,20 @@ const main = {
 				return;
 			}
 
-			// Add the help button
-			const elBtnHelpCnt = document.createElement('div'),
-				elBtnHelp = document.createElement('a');
-			elBtnHelpCnt.setAttribute('role', 'menuitem');
-			elBtnHelpCnt.classList.add(
-				'gkfs-menu-item-container',
-				'VIpgJd-j7LFlb'
-			);
-			elBtnHelp.classList.add('gkfs-menu-item', 'VIpgJd-j7LFlb-bN97Pc');
-			elBtnHelp.innerText = 'Fullscreen Info & Help';
-			elBtnHelp.setAttribute(
-				'href',
+			// Add the help menu item link
+			main.addMenuItem(
+				elMenu,
+				'Fullscreen Info & Help',
 				'https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md'
 			);
-			elBtnHelp.setAttribute('target', '_blank');
-			elMenu.insertAdjacentElement('beforeend', elBtnHelpCnt);
-			elBtnHelpCnt.insertAdjacentElement('afterbegin', elBtnHelp);
 
-			// Add the options button
-			const elBtnOptionsCnt = document.createElement('div'),
-				elBtnOptions = document.createElement('a');
-			elBtnOptionsCnt.setAttribute('role', 'menuitem');
-			elBtnOptionsCnt.classList.add(
-				'gkfs-menu-item-container',
-				'VIpgJd-j7LFlb'
+			// Add the options menu item with click event
+			const elMenuItemOptions = main.addMenuItem(
+				elMenu,
+				'Fullscreen Options',
+				'#'
 			);
-			elBtnOptions.classList.add(
-				'gkfs-menu-item',
-				'VIpgJd-j7LFlb-bN97Pc'
-			);
-			elBtnOptions.innerText = 'Fullscreen Options';
-			elBtnOptions.setAttribute('href', '#');
-			elMenu.insertAdjacentElement('beforeend', elBtnOptionsCnt);
-			elBtnOptionsCnt.insertAdjacentElement('afterbegin', elBtnOptions);
-			elBtnOptions.addEventListener('click', function (event) {
+			elMenuItemOptions.addEventListener('click', function (event) {
 				event.preventDefault();
 				chrome.runtime.sendMessage({ action: 'open-options' });
 			});
@@ -224,6 +203,24 @@ const main = {
 			// Mark as initialized
 			elMenu.classList.add('gkfs-menu-initialized');
 		});
+	},
+
+	addMenuItem: function (elMenu, text, url = '#') {
+		const elMenuItem = document.createElement('a'),
+			elMenuItemText = document.createElement('span');
+		elMenuItem.setAttribute('role', 'menuitem');
+		elMenuItem.classList.add('gkfs-menu-item', 'VIpgJd-j7LFlb');
+		elMenuItem.setAttribute('href', url);
+		elMenuItem.setAttribute('target', '_blank');
+		elMenuItemText.classList.add(
+			'gkfs-menu-item-text',
+			'VIpgJd-j7LFlb-bN97Pc'
+		);
+		elMenuItemText.innerText = text;
+		elMenu.insertAdjacentElement('beforeend', elMenuItem);
+		elMenuItem.insertAdjacentElement('afterbegin', elMenuItemText);
+
+		return elMenuItem;
 	},
 };
 

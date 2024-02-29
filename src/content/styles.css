@@ -121,10 +121,15 @@ body.gkfs-dark-mode
 	filter: invert(100%);
 }
 
-.gkfs-menu-item-container:hover {
+.gkfs-menu-item {
+	display: block;
+	text-decoration: none;
+}
+
+.gkfs-menu-item:hover {
 	background: #eee;
 }
-.gkfs-menu-item {
+.gkfs-menu-item-text {
 	color: #333;
 	text-decoration: none;
 }
