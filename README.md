@@ -12,7 +12,7 @@
 -   Supports Dark Mode
 -   Works with non-English language settings
 -   🆕 Options page to customize behavior (width, padding, background)
--   🆕 Keyboard shortcut (Ctrl/Cmd+F default) to toggle full screen on and off
+-   🆕 Customizable keyboard shortcut (Ctrl/Cmd+F default) to toggle full screen on and off
 -   🆕 Other minor bug fixes & enhancements
 
 ## Warnings & Important Notes
@@ -31,7 +31,7 @@ The simplest method is to install from the extension or add-on page for your bro
 -   [Install in Edge](https://microsoftedge.microsoft.com/addons/detail/google-keep-full-screen/mfbggeknlmaadiommcbkidgofgkmdakf)
 -   [Install in Firefox](https://addons.mozilla.org/en-US/firefox/addon/google-keep-full-screen-edit/)
 
-#### Manual Installation / Sideloading
+#### Manual Installation for Development (Sideloading)
 
 This is useful if you want to change the extension or use it as an example to create your own.
 
