@@ -40,11 +40,11 @@ This is useful if you want to change the extension or use it as an example to cr
 -   [Sideload in Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading)
 
 ### General Use
--   Full-screen is enabled by default when you install the extension.
--   Use the icon at the bottom of the note - or the keyboard shortcut - to toggle full-screen on and off as needed.
+-   Full-screen is enabled by default when you first install the extension.
+-   Use the full-screen icon at the bottom of the note to toggle full-screen on and off as needed.
+-   Alternatively, use the keyboard shortcut, which you can customize at "chrome://extensions/shortcuts"
 -   Your selection will be remembered between notes and sessions.
--   Open the extension Options (from a note menu, Keep menu, extension icon menu or extension page) to customize behavior.
--   Change the keyboard shortcut at "chrome://extensions/shortcuts"
+-   Open the extension options (from a note menu, Keep menu, extension icon menu or extension page) to customize behavior.
 
 ### Like the Extension?
 
