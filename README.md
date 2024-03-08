@@ -12,7 +12,7 @@
 -   Supports Dark Mode
 -   Works with non-English language settings
 -   🆕 Options page to customize behavior (width, padding, background)
--   🆕 Customizable keyboard shortcut (Ctrl/Cmd+F default) to toggle full screen on and off
+-   🆕 Customizable keyboard shortcut (Ctrl+Shift+F or Cmd+Shift+F by default) to toggle full screen on and off
 -   🆕 Other minor bug fixes & enhancements
 
 ## Warnings & Important Notes
@@ -60,10 +60,13 @@ Found a bug? Have a suggestion?
 
 [Submit it here](https://github.com/chrisputnam9/chrome-google-keep-full-screen/issues)
 
-Thanks to all who have contributed reviews, suggestions, bug reports, etc. Special thanks to
+Thanks to all who have contributed reviews, suggestions, bug reports, etc. including but not limited to:
 [@MartinLichtblau](https://github.com/MartinLichtblau),
 [@tbrodbeck](https://github.com/tbrodbeck),
-[@JnLlnd](https://github.com/JnLlnd)
+[@JnLlnd](https://github.com/JnLlnd),
+[@dylankenneally](https://github.com/dylankenneally),
+[@Paliec](https://github.com/Palivec),
+[@macdonaldster](https://github.com/macdonaldster)
 
 Developer sustenance funding is welcome, but not expected
 
