@@ -2,7 +2,7 @@
 
 ## Demo
 
-![Google Keep Full Screen Demo Screen Recording](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/images/demo_1.2.1.gif)
+![Google Keep Full Screen Demo Screen Recording](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/images/demo_1.3.0.gif)
 
 ## Latest Version: 1.3.0
 
