@@ -17,9 +17,9 @@
 
 ## Warnings & Important Notes
 
- 1. *Use this extension at your own risk.* It shouldn't cause problems, but I can't make any guarantees, so back up critical notes.
- 2. *This extension only works with the website version* of Google Keep (eg. https://keep.google.com/keep/) - it won't work with the "app" version (the one you might install and launch from your app menu -ie. for offline use).
- 3. At this time, clicking the extension icon itself does not toggle anything - click the full-screen icon added to the note itself to toggle full-screen on and off.
+ 1. **Use this extension at your own risk.** It shouldn't cause problems, but I can't make any guarantees. It's wise to keep critical notes [backed up](https://support.google.com/keep/answer/10017039?hl=en).
+ 2. **This extension only works with the website version** of Google Keep (eg. https://keep.google.com/keep/) - it won't work with the "app" version (the one you might install and launch from your app menu -ie. for offline use).
+ 3. At this time, clicking the extension icon itself does not toggle anything - click the full-screen icon added to the note itself (or use the keyboard shortcut) to toggle full-screen on and off.
 
 ## Help
 
@@ -35,7 +35,7 @@ The simplest method is to install from the extension or add-on page for your bro
 
 This is useful if you want to change the extension or use it as an example to create your own.
 
--   [Sideload in Chrome](https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked)
+-   [Sideload in Chrome](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked)
 -   [Sideload in Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Your_first_WebExtension#installing)
 -   [Sideload in Edge](https://docs.microsoft.com/en-us/microsoft-edge/extensions-chromium/getting-started/extension-sideloading)
 
