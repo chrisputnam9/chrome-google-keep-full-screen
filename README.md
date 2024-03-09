@@ -19,7 +19,8 @@
 
  1. **Use this extension at your own risk.** It shouldn't cause problems, but I can't make any guarantees. It's wise to keep critical notes [backed up](https://support.google.com/keep/answer/10017039?hl=en).
  2. **This extension only works with the website version** of Google Keep (eg. https://keep.google.com/keep/) - it won't work with the "app" version (the one you might install and launch from your app menu -ie. for offline use).
- 3. At this time, clicking the extension icon itself does not toggle anything - click the full-screen icon added to the note itself (or use the keyboard shortcut) to toggle full-screen on and off.
+ 3. **For Firefox & Edge, see [Version 1.2.3 Documentation](https://github.com/chrisputnam9/chrome-google-keep-full-screen/tree/version-1.2.3)**. At this time, the latest version (1.3.0) is only available on Chrome due to development limitations with the other browsers.
+ 4. At this time, clicking the extension icon itself does not toggle anything - click the full-screen icon added to the note itself (or use the keyboard shortcut) to toggle full-screen on and off.
 
 ## Help
 
