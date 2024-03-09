@@ -7,8 +7,11 @@
 }
 
 /** Backdrop **/
-.gkfs-fullscreen .VIpgJd-TUo6Hb-xJ5Hnf.XKSfm-L9AdLc-AHe6Kc.eo9XGd {
+.gkfs-fullscreen.gkfs-has-open-note .VIpgJd-TUo6Hb-xJ5Hnf.XKSfm-L9AdLc-AHe6Kc {
 	opacity: calc(var(--setting_backdrop_opacity) / 100) !important;
+	display: block !important;
+	width: 100% !important;
+	height: 100% !important;
 }
 
 /* Note - Fullscreen Default */
@@ -19,7 +22,7 @@
 	transform: translate(-50%, -50%);
 	width: calc(var(--setting_note_size) * 1%);
 	height: calc(var(--setting_note_size) * 1%);
-	z-index: 1000;
+	z-index: 4001;
 	-webkit-border-radius: 0;
 	border-radius: 0;
 	border-width: 0;

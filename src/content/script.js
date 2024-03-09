@@ -1,12 +1,12 @@
 /* global chrome */
 const main = {
 	SELECTOR_CREATED_NOTES_GROUP_CONTAINER:
-		'.gkA7Yd-sKfxWe.ma6Yeb-r8s4j-gkA7Yd>div',
-	SELECTOR_NOTE_CONTAINER: '.IZ65Hb-n0tgWb',
-	SELECTOR_OPEN_NOTE_CONTAINER: '', // dynamic
-	SELECTOR_OPEN_NOTE: '', // dynamic
-	SELECTOR_OPEN_NOTE_TOOLBAR: '', // dynamic
-	SELECTOR_NOTE_MENU: '.VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ',
+		".gkA7Yd-sKfxWe.ma6Yeb-r8s4j-gkA7Yd>div",
+	SELECTOR_NOTE_CONTAINER: ".IZ65Hb-n0tgWb",
+	SELECTOR_OPEN_NOTE_CONTAINER: "", // dynamic
+	SELECTOR_OPEN_NOTE: "", // dynamic
+	SELECTOR_OPEN_NOTE_TOOLBAR: "", // dynamic
+	SELECTOR_NOTE_MENU: ".VIpgJd-xl07Ob.VIpgJd-xl07Ob-BvBYQ",
 
 	fullscreen: true, // Default - full screen enabled
 	note: null,
@@ -22,13 +22,13 @@ const main = {
 
 	init: async function () {
 		main.SELECTOR_OPEN_NOTE_CONTAINER =
-			main.SELECTOR_NOTE_CONTAINER + '.IZ65Hb-QQhtn';
+			main.SELECTOR_NOTE_CONTAINER + ".IZ65Hb-QQhtn";
 		main.SELECTOR_OPEN_NOTE =
-			main.SELECTOR_OPEN_NOTE_CONTAINER + ' .IZ65Hb-TBnied';
+			main.SELECTOR_OPEN_NOTE_CONTAINER + " .IZ65Hb-TBnied";
 		main.SELECTOR_OPEN_NOTE_TOOLBAR =
-			main.SELECTOR_OPEN_NOTE + ' .IZ65Hb-yePe5c';
+			main.SELECTOR_OPEN_NOTE + " .IZ65Hb-yePe5c";
 
-		main.elBody = document.querySelector('body');
+		main.elBody = document.querySelector("body");
 
 		main.observerMenu = new MutationObserver(main.maybeInitMenu);
 		main.observerNoteChanges = new MutationObserver(main.checkForOpenNote);
@@ -38,9 +38,9 @@ const main = {
 		main.checkForOpenNote();
 		main.maybeInitMenu();
 
-		const storage = await promise_chrome_storage_sync_get(['settings']);
+		const storage = await promise_chrome_storage_sync_get(["settings"]);
 
-		if ('settings' in storage && 'fullscreen' in storage.settings) {
+		if ("settings" in storage && "fullscreen" in storage.settings) {
 			this.fullscreen = storage.settings.fullscreen;
 		}
 
@@ -61,11 +61,11 @@ const main = {
 		});
 
 		// Listen for popstate - triggered by forward and back buttons, and manual hash entry
-		window.addEventListener('popstate', main.checkForOpenNote);
+		window.addEventListener("popstate", main.checkForOpenNote);
 
 		// Listen for child change in head (eg. script swap for normal/dark mode)
 		// - check whether to toggle dark mode class, based on body style
-		const elHead = document.querySelector('head');
+		const elHead = document.querySelector("head");
 		new MutationObserver(main.checkForDarkMode).observe(elHead, {
 			childList: true,
 		});
@@ -74,8 +74,8 @@ const main = {
 		chrome.runtime.onMessage.addListener(function (request) {
 			// Handle keyboard shortcuts
 			if (
-				'command' in request &&
-				request.command === 'toggle-fullscreen'
+				"command" in request &&
+				request.command === "toggle-fullscreen"
 			) {
 				main.set({ fullscreen: !main.fullscreen });
 				if (main.note) {
@@ -116,26 +116,26 @@ const main = {
 		);
 		if (elNoteContainers) {
 			elNoteContainers.forEach((elNoteContainer) => {
-				if (!elNoteContainer.classList.contains('gkfs-observed')) {
+				if (!elNoteContainer.classList.contains("gkfs-observed")) {
 					// Only listen for this specific element's attributes to change
 					//  - when they do, check for an open note via same old logic
 					main.observerNoteChanges.observe(elNoteContainer, {
 						attributes: true,
 					});
 
-					elNoteContainer.classList.add('gkfs-observed');
+					elNoteContainer.classList.add("gkfs-observed");
 				}
 			});
 		}
 	},
 
 	checkForDarkMode: function () {
-		const elBody = document.querySelector('body'),
+		const elBody = document.querySelector("body"),
 			bodyStyles = getComputedStyle(elBody),
-			backgroundColor = bodyStyles['background-color'],
-			darkMode = backgroundColor !== 'rgb(255, 255, 255)';
+			backgroundColor = bodyStyles["background-color"],
+			darkMode = backgroundColor !== "rgb(255, 255, 255)";
 
-		elBody.classList.toggle('gkfs-dark-mode', darkMode);
+		elBody.classList.toggle("gkfs-dark-mode", darkMode);
 
 		promise_chrome_storage_sync_set({
 			app_selections: {
@@ -147,25 +147,29 @@ const main = {
 	checkForOpenNote: function () {
 		const elNote = document.querySelector(main.SELECTOR_OPEN_NOTE);
 		if (elNote) {
+			main.elBody.classList.add("gkfs-has-open-note");
+
 			main.elContainer = document.querySelector(
 				main.SELECTOR_OPEN_NOTE_CONTAINER
 			);
 
 			// Initialize container if needed
-			if (!main.elContainer.classList.contains('gkfs-initialized')) {
-				main.elContainer.classList.add('gkfs-initialized');
+			if (!main.elContainer.classList.contains("gkfs-initialized")) {
+				main.elContainer.classList.add("gkfs-initialized");
 
 				if (main.fullscreen) {
-					main.elBody.classList.add('gkfs-fullscreen');
+					main.elBody.classList.add("gkfs-fullscreen");
 				}
 			}
 
-			if (elNote.hasOwnProperty('gkfs') && elNote.gkfs) {
+			if (elNote.hasOwnProperty("gkfs") && elNote.gkfs) {
 				main.note = elNote.gkfs;
 				main.note.toggle_fullscreen(main.fullscreen);
 			} else {
 				main.note = new Note(elNote, main.elContainer);
 			}
+		} else {
+			main.elBody.classList.remove("gkfs-has-open-note");
 		}
 	},
 
@@ -177,7 +181,7 @@ const main = {
 				// Make sure it's one of the menus we care about
 				!elMenu.querySelector('[id=":16"], [id=":1"]') ||
 				// Skip if we already hit this menu
-				elMenu.classList.contains('gkfs-menu-initialized')
+				elMenu.classList.contains("gkfs-menu-initialized")
 			) {
 				return;
 			}
@@ -185,40 +189,40 @@ const main = {
 			// Add the help menu item link
 			main.addMenuItem(
 				elMenu,
-				'Fullscreen Info & Help',
-				'https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md'
+				"Fullscreen Info & Help",
+				"https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md"
 			);
 
 			// Add the options menu item with click event
 			const elMenuItemOptions = main.addMenuItem(
 				elMenu,
-				'Fullscreen Options',
-				'#'
+				"Fullscreen Options",
+				"#"
 			);
-			elMenuItemOptions.addEventListener('click', function (event) {
+			elMenuItemOptions.addEventListener("click", function (event) {
 				event.preventDefault();
-				chrome.runtime.sendMessage({ action: 'open-options' });
+				chrome.runtime.sendMessage({ action: "open-options" });
 			});
 
 			// Mark as initialized
-			elMenu.classList.add('gkfs-menu-initialized');
+			elMenu.classList.add("gkfs-menu-initialized");
 		});
 	},
 
-	addMenuItem: function (elMenu, text, url = '#') {
-		const elMenuItem = document.createElement('a'),
-			elMenuItemText = document.createElement('span');
-		elMenuItem.setAttribute('role', 'menuitem');
-		elMenuItem.classList.add('gkfs-menu-item', 'VIpgJd-j7LFlb');
-		elMenuItem.setAttribute('href', url);
-		elMenuItem.setAttribute('target', '_blank');
+	addMenuItem: function (elMenu, text, url = "#") {
+		const elMenuItem = document.createElement("a"),
+			elMenuItemText = document.createElement("span");
+		elMenuItem.setAttribute("role", "menuitem");
+		elMenuItem.classList.add("gkfs-menu-item", "VIpgJd-j7LFlb");
+		elMenuItem.setAttribute("href", url);
+		elMenuItem.setAttribute("target", "_blank");
 		elMenuItemText.classList.add(
-			'gkfs-menu-item-text',
-			'VIpgJd-j7LFlb-bN97Pc'
+			"gkfs-menu-item-text",
+			"VIpgJd-j7LFlb-bN97Pc"
 		);
 		elMenuItemText.innerText = text;
-		elMenu.insertAdjacentElement('beforeend', elMenuItem);
-		elMenuItem.insertAdjacentElement('afterbegin', elMenuItemText);
+		elMenu.insertAdjacentElement("beforeend", elMenuItem);
+		elMenuItem.insertAdjacentElement("afterbegin", elMenuItemText);
 
 		return elMenuItem;
 	},
@@ -232,34 +236,34 @@ const Note = function (el, elContainer) {
 	const inst = this;
 	const elToolbar = el.querySelector(main.SELECTOR_OPEN_NOTE_TOOLBAR);
 	const elBtnMore = elToolbar.querySelector(
-		'.Q0hgme-LgbsSe.Q0hgme-Bz112c-LgbsSe.xl07Ob.INgbqf-LgbsSe.VIpgJd-LgbsSe'
+		".Q0hgme-LgbsSe.Q0hgme-Bz112c-LgbsSe.xl07Ob.INgbqf-LgbsSe.VIpgJd-LgbsSe"
 	);
 
 	// Set up toggle button
-	const elBtnToggle = document.createElement('div');
-	elBtnToggle.setAttribute('role', 'button');
-	elBtnToggle.setAttribute('aria-label', 'Full-screen Toggle');
-	elBtnToggle.setAttribute('title', 'Full-screen Toggle');
+	const elBtnToggle = document.createElement("div");
+	elBtnToggle.setAttribute("role", "button");
+	elBtnToggle.setAttribute("aria-label", "Full-screen Toggle");
+	elBtnToggle.setAttribute("title", "Full-screen Toggle");
 	elBtnToggle.classList.add(
-		'gkfs-toggle',
-		'active',
-		'Q0hgme-LgbsSe',
-		'Q0hgme-Bz112c-LgbsSe',
-		'INgbqf-LgbsSe',
-		'VIpgJd-LgbsSe'
+		"gkfs-toggle",
+		"active",
+		"Q0hgme-LgbsSe",
+		"Q0hgme-Bz112c-LgbsSe",
+		"INgbqf-LgbsSe",
+		"VIpgJd-LgbsSe"
 	);
 
 	// Set up icon span
-	const elIconSpan = document.createElement('span');
-	elIconSpan.classList.add('gkfs-toggle-icon');
+	const elIconSpan = document.createElement("span");
+	elIconSpan.classList.add("gkfs-toggle-icon");
 
-	elBtnToggle.classList.toggle('active', main.fullscreen);
+	elBtnToggle.classList.toggle("active", main.fullscreen);
 
 	// Add toggle button right before the more button
-	elBtnMore.insertAdjacentElement('beforebegin', elBtnToggle);
+	elBtnMore.insertAdjacentElement("beforebegin", elBtnToggle);
 
 	// Add icon span inside the toggle button
-	elBtnToggle.insertAdjacentElement('beforeend', elIconSpan);
+	elBtnToggle.insertAdjacentElement("beforeend", elIconSpan);
 
 	// Set up properties
 	inst.el = el;
@@ -269,25 +273,25 @@ const Note = function (el, elContainer) {
 	// Set up methods
 	inst.toggle_fullscreen = function (event_or_state) {
 		if (event_or_state === true || event_or_state === false) {
-			main.elBody.classList.toggle('gkfs-fullscreen', event_or_state);
+			main.elBody.classList.toggle("gkfs-fullscreen", event_or_state);
 		} else {
-			main.elBody.classList.toggle('gkfs-fullscreen');
+			main.elBody.classList.toggle("gkfs-fullscreen");
 		}
 
-		const active = main.elBody.classList.contains('gkfs-fullscreen');
-		const elBtns = document.querySelectorAll('.gkfs-toggle');
+		const active = main.elBody.classList.contains("gkfs-fullscreen");
+		const elBtns = document.querySelectorAll(".gkfs-toggle");
 
 		main.set({ fullscreen: active });
 
 		elBtns.forEach((elBtn) => {
-			elBtn.classList.toggle('active', active);
+			elBtn.classList.toggle("active", active);
 		});
 	};
 
 	inst.update_buttons = function () {};
 
 	// Event listener, now that it's defined
-	elBtnToggle.addEventListener('click', inst.toggle_fullscreen);
+	elBtnToggle.addEventListener("click", inst.toggle_fullscreen);
 
 	// Fully initialized, set instance on element data
 	inst.el.gkfs = inst;
@@ -314,6 +318,6 @@ function promise_chrome_storage_sync_get(data) {
 	});
 }
 
-window.addEventListener('load', () => {
+window.addEventListener("load", () => {
 	main.init();
 });
