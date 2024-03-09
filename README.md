@@ -51,7 +51,7 @@ This is useful if you want to change the extension or use it as an example to cr
 
 Please rate or review it to help others find it!
 
--   [Reviews for Chrome](https://chrome.google.com/webstore/detail/kcfmkpjpemonceecfpgamaahlkfpjhdk)
+-   [Reviews for Chrome](https://chromewebstore.google.com/detail/google-keep-full-screen-e/kcfmkpjpemonceecfpgamaahlkfpjhdk/reviews)
 -   [Reviews for Edge](https://microsoftedge.microsoft.com/addons/detail/google-keep-full-screen/mfbggeknlmaadiommcbkidgofgkmdakf)
 -   [Reviews for Firefox](https://addons.mozilla.org/en-US/firefox/addon/google-keep-full-screen-edit/)
 
@@ -61,7 +61,7 @@ Found a bug? Have a suggestion?
 
 [Submit it here](https://github.com/chrisputnam9/chrome-google-keep-full-screen/issues)
 
-Thanks to all who have contributed reviews, suggestions, bug reports, etc. including but not limited to:
+Thanks to all who have contributed reviews, suggestions, bug reports, etc. Special thanks to
 [@MartinLichtblau](https://github.com/MartinLichtblau),
 [@tbrodbeck](https://github.com/tbrodbeck),
 [@JnLlnd](https://github.com/JnLlnd),
