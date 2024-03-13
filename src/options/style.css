@@ -111,7 +111,8 @@ form input[type="submit"] {
 	width: 120px;
 }
 
-form input[type="reset"] {
+form input[type="reset"],
+form input[type="button"] {
 	background: var(--color_text_default);
 	color: var(--color_background2);
 	opacity: 0.5;
@@ -142,7 +143,8 @@ form label.info:after {
 
 form label:hover,
 form input[type="submit"]:hover,
-form input[type="reset"]:hover {
+form input[type="reset"]:hover,
+form input[type="button"]:hover {
 	opacity: 0.9;
 	cursor: pointer;
 }
