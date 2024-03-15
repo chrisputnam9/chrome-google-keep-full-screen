@@ -12,22 +12,7 @@ const optionsHandler = {
 		self.root = document.querySelector(":root");
 		self.body = document.querySelector("body");
 
-		/* Listen for options form submit and update options */
-		self.form = document.querySelector("form#gkfs-options-form");
-
-		if (self.form) {
-			self.form.addEventListener("submit", function (event) {
-				event.preventDefault();
-				const options = {};
-				this.querySelectorAll("input[name]").forEach((input) => {
-					options[input.name] = parseInt(input.value);
-				});
-				self.changeOptions(options);
-				document
-					.querySelector(".gkfs-options-unsaved-changes")
-					.classList.remove("gkfs-options-unsaved-changes");
-			});
-		}
+		self.initForm();
 
 		/* Listen for changes to options */
 		chrome.storage.onChanged.addListener(function (changes, area) {
@@ -53,6 +38,9 @@ const optionsHandler = {
 			}
 
 			self.updateOptionsOnPage(data.options);
+
+			// Initialize inputs *after* loading option data
+			self.initInputs();
 		});
 
 		/* On load, get initial options */
@@ -62,6 +50,52 @@ const optionsHandler = {
 			}
 
 			self.updateOptionsOnPage(data.app_selections);
+		});
+	},
+
+	/**
+	 * Init form and input handling on options page
+	 */
+	initForm: function () {
+		const self = optionsHandler;
+		self.form = document.querySelector("form#gkfs-options-form");
+		if (self.form) {
+			self.form.addEventListener("submit", function (event) {
+				event.preventDefault();
+				const options = {};
+				this.querySelectorAll("input[name]").forEach((input) => {
+					options[input.name] = parseInt(input.value);
+				});
+				self.changeOptions(options);
+				self.initInputs();
+			});
+		}
+	},
+
+	/**
+	 * Initialize inputs to watch when they change form initial values
+	 */
+	initInputs: function () {
+		const self = optionsHandler;
+		const inputs = self.form.querySelectorAll("input[name]");
+		const initial_values = {};
+		inputs.forEach((input) => {
+			initial_values[input.name] = input.value;
+			input.classList.remove("gkfs-options-unsaved-changes");
+			input.addEventListener("change", function (event) {
+				const changed_input = event.target;
+				changed_input.classList.toggle(
+					"gkfs-options-unsaved-changes",
+					initial_values[changed_input.name] !== changed_input.value
+				);
+
+				console.log("-----------------------------");
+				console.log(event);
+				console.log(event.target);
+				console.log(initial_values);
+				console.log(changed_input.name);
+				console.log(changed_input.value);
+			});
 		});
 	},
 
