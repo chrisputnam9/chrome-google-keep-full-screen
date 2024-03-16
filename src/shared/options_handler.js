@@ -69,34 +69,55 @@ const optionsHandler = {
 				self.changeOptions(options);
 				self.initInputs();
 			});
+			self.form.addEventListener("reset", function (event) {
+				window.setTimeout(function () {
+					self.form.querySelector("input[type=submit]").click();
+				}, 1);
+			});
 		}
 	},
 
 	/**
-	 * Initialize inputs to watch when they change form initial values
+	 * Initialize inputs in options form
 	 */
 	initInputs: function () {
 		const self = optionsHandler;
+
+		// Watch when option inputs change from initial values
 		const inputs = self.form.querySelectorAll("input[name]");
 		const initial_values = {};
 		inputs.forEach((input) => {
 			initial_values[input.name] = input.value;
 			input.classList.remove("gkfs-options-unsaved-changes");
-			input.addEventListener("change", function (event) {
+			input.addEventListener("input", function (event) {
 				const changed_input = event.target;
 				changed_input.classList.toggle(
 					"gkfs-options-unsaved-changes",
 					initial_values[changed_input.name] !== changed_input.value
 				);
-
-				console.log("-----------------------------");
-				console.log(event);
-				console.log(event.target);
-				console.log(initial_values);
-				console.log(changed_input.name);
-				console.log(changed_input.value);
 			});
 		});
+
+		// Close Warning if there are unsaved changes
+		window.addEventListener("beforeunload", function (event) {
+			if (self.form.querySelector(".gkfs-options-unsaved-changes")) {
+				event.preventDefault();
+				return;
+			}
+			event.returnValue = "";
+		});
+
+		// Close Button and Clicking Backdrop both attempt to close window
+		document
+			.querySelectorAll(
+				"#close-button, .VIpgJd-TUo6Hb-xJ5Hnf.XKSfm-L9AdLc-AHe6Kc"
+			)
+			.forEach((el) => {
+				el.addEventListener("click", function () {
+					console.log("Clicked:", el);
+					window.close();
+				});
+			});
 	},
 
 	/**
