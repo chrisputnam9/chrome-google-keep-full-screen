@@ -1,7 +1,5 @@
 # Google Keep - Full Screen - Browser Extension
 
-## Demo
-
 ![Google Keep Full Screen Demo Screen Recording](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/images/demo_1.3.0.gif)
 
 ## Latest Version: 1.3.0
@@ -14,6 +12,12 @@
 -   🆕 Options page to customize behavior (width, padding, background)
 -   🆕 Customizable keyboard shortcut (Ctrl+Shift+F or Cmd+Shift+F by default) to toggle full screen on and off
 -   🆕 Other minor bug fixes & enhancements
+
+## Edge and Firefox Versions
+-   Edge is on version 1.2.1 (1.3.1 is pending review as of 3/25/2024)
+-   Firefox is on 1.2.3 (a development limitation prevents us from easily updating for now)
+-   You can view the [information for the older 1.2 version here](https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/version-1.2.3/README.md)
+
 
 ## Warnings & Important Notes
 
