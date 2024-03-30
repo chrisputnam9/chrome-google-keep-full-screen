@@ -1,0 +1,49 @@
+{
+	"name": "Full Screen Editing for Google Keep Notes",
+	"short_name": "FSE for Keep",
+	"description": "Makes note editing take up the full browser window",
+	"homepage_url": "https://github.com/chrisputnam9/chrome-google-keep-full-screen",
+	"version": "1.3.1",
+	"icons": {
+		"16": "images/generic/icon16.png",
+		"48": "images/generic/icon48.png",
+		"128": "images/generic/icon128.png"
+	},
+
+	"options_page": "src/options/index.html",
+
+	"permissions": ["storage"],
+
+	"host_permissions": ["*://keep.google.com/*"],
+
+	"background": {
+		"service_worker": "src/service_worker.js"
+	},
+
+	"commands": {
+		"toggle-fullscreen": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+F",
+				"mac": "Command+Shift+F"
+			},
+			"description": "Toggle full screen editing"
+		}
+	},
+
+	"content_scripts": [
+		{
+			"matches": ["*://keep.google.com/*"],
+			"css": ["src/content/styles.css"],
+			"js": ["src/content/script.js", "src/shared/options_handler.js"],
+			"run_at": "document_start"
+		}
+	],
+
+	"manifest_version": 3,
+
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "chrome-google-keep-full-screen@cmp.onl"
+		}
+	}
+}
