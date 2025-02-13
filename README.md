@@ -13,8 +13,8 @@
 -   🆕 Customizable keyboard shortcut (Ctrl+Shift+F or Cmd+Shift+F by default) to toggle full screen on and off
 -   🆕 Other minor bug fixes & enhancements
 
-## Firefox on Older Version
--   Firefox is on 1.2.3 (a development limitation prevents us from easily updating for now)
+## Firefox Latest Version: 1.2.3
+-   The Firefox extension is at 1.2.3. A technical limitation prevents us from easily updating for now.
 -   You can view the [information for the older version here](https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/version-1.2.3/README.md)
 
 
