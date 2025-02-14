@@ -50,15 +50,37 @@ Note that width and height will never drop below minimal values to ensure basic 
 								<p>
 									<label
 										class="info"
-										for="note_padding"
+										for="note_padding_horizontal"
 										title="Percentage of note size (0-20)
-to pad (add margin around) note content when fullscreen is enabled."
-										>Padding</label
+to horizontally pad (add margin to left and right of) note content when fullscreen is enabled."
+										>&#x2194; Horizontal Padding</label
 									>
 									<input
 										type="number"
-										id="note_padding"
-										name="note_padding"
+										id="note_padding_horizontal"
+										name="note_padding_horizontal"
+										value="0"
+										placeholder="0"
+										min="0"
+										max="20"
+										step="1"
+										required
+									/>
+									<span>%</span>
+								</p>
+
+								<p>
+									<label
+										class="info"
+										for="note_padding_vertical"
+										title="Percentage of note size (0-20)
+to vertically pad (add margin to top and bottom of) note content when fullscreen is enabled."
+										>&#x2195; Vertical Padding</label
+									>
+									<input
+										type="number"
+										id="note_padding_vertical"
+										name="note_padding_vertical"
 										value="0"
 										placeholder="0"
 										min="0"

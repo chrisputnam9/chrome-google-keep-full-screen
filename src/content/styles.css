@@ -2,7 +2,8 @@
 :root {
 	/** Settings Variables **/
 	--setting_note_size: 100;
-	--setting_note_padding: 0;
+	--setting_note_padding_horizontal: 0;
+	--setting_note_padding_vertical: 0;
 	--setting_backdrop_opacity: 75;
 }
 
@@ -58,7 +59,7 @@
 	.IZ65Hb-TBnied
 	.IZ65Hb-s2gQvd
 	.IZ65Hb-r4nke-haAclf {
-	padding: calc(var(--setting_note_padding) * 1%);
+	padding: calc(var(--setting_note_padding_vertical) * 1%); calc(var(--setting_note_padding_horizontal) * 1%);
 	padding-bottom: 0;
 }
 
@@ -68,7 +69,7 @@
 	.IZ65Hb-TBnied
 	.IZ65Hb-s2gQvd
 	.IZ65Hb-qJTHM-haAclf {
-	padding: calc(var(--setting_note_padding) * 1%);
+	padding: calc(var(--setting_note_padding_vertical) * 1%); calc(var(--setting_note_padding_horizontal) * 1%);
 	padding-top: 0;
 	padding-bottom: 0;
 }

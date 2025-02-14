@@ -124,13 +124,14 @@ form p span {
 }
 
 form label.info:after {
-	content: "\02139";
+	content: "?";
 	position: relative;
 	display: inline-block;
 	width: 15px;
 	height: 15px;
-	font-size: 12px;
+	font-size: 11px;
 	text-align: center;
+	font-weight: 1000;
 	top: -6px;
 	left: 4px;
 	border-radius: 50%;
