@@ -5,9 +5,9 @@
 	"homepage_url": "https://github.com/chrisputnam9/chrome-google-keep-full-screen",
 	"version": "1.4.0",
 	"icons": {
-		"16": "images/generic/icon16.png",
-		"48": "images/generic/icon48.png",
-		"128": "images/generic/icon128.png"
+		"16": "images/icon16.png",
+		"48": "images/icon48.png",
+		"128": "images/icon128.png"
 	},
 
 	"options_page": "src/options/index.html",
