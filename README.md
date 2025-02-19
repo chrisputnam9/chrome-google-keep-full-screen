@@ -9,9 +9,12 @@
 -   Remembers full screen status across sessions
 -   Supports Dark Mode
 -   Works with non-English language settings
--   🆕 Options page to customize behavior (width, padding, background)
--   🆕 Customizable keyboard shortcut (Ctrl+Shift+F or Cmd+Shift+F by default) to toggle full screen on and off
--   🆕 Other minor bug fixes & enhancements
+-   Options page to customize behavior (width, padding, background)
+-   Customizable keyboard shortcut (Ctrl+Shift+F or Cmd+Shift+F by default) to toggle full screen on and off
+-   🆕 Options allow fading out extra note items (menu, labels, etc) for even more distraction-free work and focus on the note content
+-   🆕 Options allow customizing horizontal and vertical padding separately
+-   🆕 Improved padding styling that works with labels, previews, etc.
+-   🆕 Icons to help identify options
 
 ## Firefox Latest Version: 1.2.3
 -   The Firefox extension is at 1.2.3. A technical limitation prevents us from easily updating for now.

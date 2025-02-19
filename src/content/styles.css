@@ -53,27 +53,10 @@
 	max-height: calc(100% - 40px) !important;
 }
 
-/* Note Content Title */
-.gkfs-fullscreen
-	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
-	.IZ65Hb-TBnied
-	.IZ65Hb-s2gQvd
-	.IZ65Hb-r4nke-haAclf {
+/* Note Content Continaer */
+.gkfs-fullscreen .IZ65Hb-n0tgWb.IZ65Hb-QQhtn .IZ65Hb-TBnied .IZ65Hb-s2gQvd {
 	padding: calc(var(--setting_note_padding_vertical) * 1%)
 		calc(var(--setting_note_padding_horizontal) * 1%);
-	padding-bottom: 0;
-}
-
-/* Note Content Body */
-.gkfs-fullscreen
-	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
-	.IZ65Hb-TBnied
-	.IZ65Hb-s2gQvd
-	.IZ65Hb-qJTHM-haAclf {
-	padding: calc(var(--setting_note_padding_vertical) * 1%)
-		calc(var(--setting_note_padding_horizontal) * 1%);
-	padding-top: 0;
-	padding-bottom: 0;
 }
 
 /* Tooltip - Edited/Created Note */
