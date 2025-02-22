@@ -126,6 +126,17 @@ const optionsHandler = {
 	updateOptionsOnPage: function (options) {
 		const self = optionsHandler;
 
+		/* Support old single padding option that might be saved for some */
+		if ("note_padding" in options) {
+			if (!("note_padding_horizontal" in options)) {
+				options["note_padding_horizontal"] = options["note_padding"];
+			}
+			if (!("note_padding_vertical" in options)) {
+				options["note_padding_vertical"] = options["note_padding"];
+			}
+			delete options["note_padding"];
+		}
+
 		for (const option_name in options) {
 			const option_value = options[option_name];
 
@@ -172,6 +183,11 @@ const optionsHandler = {
 			}
 
 			const mergedOptions = Object.assign(oldOptions, newOptions);
+
+			// Remove old padding option if it exists
+			if ("note_padding" in mergedOptions) {
+				delete mergedOptions["note_padding"];
+			}
 
 			chrome.storage.sync.set({ options: mergedOptions });
 		});
