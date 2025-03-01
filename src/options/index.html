@@ -117,6 +117,33 @@ How much to hide background (other notes) when fullscreen is enabled.
 								</p>
 
 								<p>
+									<label
+										class="info"
+										for="note_menu_opacity"
+										title="Percentage (0-100)
+
+How much to show note menus and buttons for a distraction-free experience.
+
+100 is fully visibile, 1 is completely invisible.
+
+Be sure you know roughly where to hover over buttons before going hiding too thoroughly."
+										>&#9746; Note Buttons Visibility</label
+									>
+									<input
+										type="number"
+										id="note_menu_opacity"
+										name="note_menu_opacity"
+										value="100"
+										placeholder="100"
+										min="1"
+										max="100"
+										step="1"
+										required
+									/>
+									<span>%</span>
+								</p>
+
+								<p class="note-buttons">
 									<input
 										type="submit"
 										value="Save & Preview"
@@ -132,7 +159,7 @@ How much to hide background (other notes) when fullscreen is enabled.
 									/>
 								</p>
 
-								<p>
+								<p class="note-buttons">
 									<a
 										href="https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/master/README.md"
 										target="_blank"

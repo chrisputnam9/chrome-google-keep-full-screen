@@ -5,6 +5,7 @@
 	--setting_note_padding_horizontal: 0;
 	--setting_note_padding_vertical: 0;
 	--setting_backdrop_opacity: 75;
+	--setting_note_menu_opacity: 100;
 }
 
 /** Backdrop **/
@@ -77,6 +78,43 @@
 /* Alerts - show over toolbar */
 .gkfs-fullscreen .IZ65Hb-n0tgWb.IZ65Hb-QQhtn .Ng57nc.EfADOe.ti6hGc {
 	position: relative;
+}
+
+/* Note Menu / Buttons */
+.gkfs-fullscreen .note-buttons,
+.gkfs-fullscreen .IZ65Hb-n0tgWb.IZ65Hb-QQhtn .IZ65Hb-TBnied [role="button"],
+.gkfs-fullscreen
+	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
+	.IZ65Hb-TBnied
+	.XPtOyb-di8rgd-Bz112c,
+.gkfs-fullscreen
+	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
+	.IZ65Hb-TBnied
+	.IZ65Hb-hSRGPd-e1YmVc-FCjw3e {
+	opacity: calc(var(--setting_note_menu_opacity) / 100) !important;
+}
+
+.gkfs-fullscreen .note-buttons:hover,
+.gkfs-fullscreen
+	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
+	.IZ65Hb-TBnied
+	[role="button"]:hover,
+.gkfs-fullscreen
+	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
+	.IZ65Hb-TBnied
+	.XPtOyb-di8rgd-Bz112c:hover,
+.gkfs-fullscreen
+	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
+	.IZ65Hb-TBnied
+	.IZ65Hb-hSRGPd-e1YmVc-FCjw3e:hover {
+	opacity: 1 !important;
+}
+
+.gkfs-fullscreen
+	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
+	.IZ65Hb-TBnied
+	[role="button"][aria-disabled="true"]:hover {
+	opacity: 0.25 !important;
 }
 
 /* Fullscreen Toggle Button */
