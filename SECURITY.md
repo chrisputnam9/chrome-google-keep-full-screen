@@ -8,4 +8,4 @@ For **Mozilla Firefox, only version _1.2.3x_** is supported at this time - see [
 
 ## Reporting a Vulnerability
 
-Please report vulnerabilities via [Issues](https://github.com/chrisputnam9/chrome-google-keep-full-screen/issues), and tag @chrisputnam9 for very serious issues.
+Please report vulnerabilities via [Issues](https://github.com/chrisputnam9/chrome-google-keep-full-screen/issues/new?template=BLANK_ISSUE), and tag @chrisputnam9 for very serious issues.
