@@ -17,7 +17,7 @@
 	"host_permissions": ["*://keep.google.com/*"],
 
 	"background": {
-		"service_worker": "src/service_worker.js"
+		"scripts": ["src/service_worker.js"]
 	},
 
 	"commands": {
