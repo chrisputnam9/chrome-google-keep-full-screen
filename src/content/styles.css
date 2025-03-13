@@ -156,6 +156,9 @@ body.gkfs-dark-mode
 .gkfs-menu-item:hover {
 	background: #eee;
 }
+body.gkfs-dark-mode .gkfs-menu-item:hover {
+	background-color: rgba(255, 255, 255, 0.16);
+}
 .gkfs-menu-item-text {
 	color: #333;
 	text-decoration: none;
