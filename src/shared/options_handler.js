@@ -83,6 +83,10 @@ const optionsHandler = {
 	initInputs: function () {
 		const self = optionsHandler;
 
+		if (!self.form) {
+			return;
+		}
+
 		// Watch when option inputs change from initial values
 		const inputs = self.form.querySelectorAll("input[name]");
 		const initial_values = {};
