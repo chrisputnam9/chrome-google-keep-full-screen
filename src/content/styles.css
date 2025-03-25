@@ -44,12 +44,13 @@
 
 /* Shadow behind Note */
 .gkfs-fullscreen .IZ65Hb-n0tgWb.IZ65Hb-QQhtn {
-	box-shadow: none;
+	box-shadow: none !important;
 }
 
 /* Note Content Container */
 .gkfs-fullscreen .IZ65Hb-n0tgWb.IZ65Hb-QQhtn .IZ65Hb-TBnied .IZ65Hb-s2gQvd {
 	/* span content-area over whole note, minus the bottom toolbar */
+	box-sizing: border-box !important;
 	height: 100% !important;
 	max-height: calc(100% - 40px) !important;
 }
@@ -83,6 +84,7 @@
 /* Note Menu / Buttons */
 .gkfs-fullscreen .note-buttons,
 .gkfs-fullscreen .IZ65Hb-n0tgWb.IZ65Hb-QQhtn .IZ65Hb-TBnied [role="button"],
+.gkfs-fullscreen .IZ65Hb-yePe5c.vUSp5d,
 .gkfs-fullscreen
 	.IZ65Hb-n0tgWb.IZ65Hb-QQhtn
 	.IZ65Hb-TBnied
