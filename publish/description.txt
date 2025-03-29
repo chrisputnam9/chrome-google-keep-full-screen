@@ -1,4 +1,4 @@
-VERSION 1.4.0
+VERSION 1.4.1
 ---------------------------------------------------------------------------------------------------
  * Allows Google Keep editing to use the full browser window.
  * Allows toggling full screen on and off by clicking on an icon added on the notes.

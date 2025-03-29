@@ -303,7 +303,8 @@ function promise_chrome_storage_sync_set(data) {
 		try {
 			chrome.storage.sync.set(data, resolve);
 		} catch (error) {
-			reject(error);
+			// No need to worry, this happens from time to time when refreshing, etc.
+			console.log("error: ", error);
 		}
 	});
 }

@@ -2,7 +2,7 @@
 
 ![Google Keep Full Screen Demo Screen Recording](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/publish/images/demo_1.3.0.gif)
 
-## Latest Version: 1.4.0
+## Latest Version: 1.4.1
 
 - Allows Google Keep editing to use the full browser window.
 - Allows toggling full screen on and off by clicking on an icon added on the notes.
