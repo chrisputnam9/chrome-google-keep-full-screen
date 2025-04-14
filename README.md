@@ -16,11 +16,6 @@
 - 🆕 Improved padding styling that works with labels, previews, etc.
 - 🆕 Icons to help identify options
 
-## Firefox Latest Version: 1.2.3
-
-- The Firefox extension is at 1.2.3. A technical limitation prevents us from easily updating for now.
-- You can view the [information for the older version here](https://github.com/chrisputnam9/chrome-google-keep-full-screen/blob/version-1.2.3/README.md)
-
 ## Warnings & Important Notes
 
 1.  **Use this extension at your own risk.** It shouldn't cause problems, but I can't make any guarantees. It's wise to keep critical notes [backed up](https://support.google.com/keep/answer/10017039?hl=en).
