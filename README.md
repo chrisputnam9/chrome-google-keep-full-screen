@@ -1,6 +1,6 @@
 # Google Keep - Full Screen - Browser Extension
 
-[![Google Keep Full Screen Demo Screen Recording](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/publish/images/demo_thumbnail_with_button.png)](https://www.youtube.com/watch?v=xyapRE7d3lw&ab_channel=ChrisPutnam)
+[![Google Keep Full Screen Demo Screen Recording](https://raw.githubusercontent.com/chrisputnam9/chrome-google-keep-full-screen/master/publish/images/demo_thumbnail_with_button.png)](https://www.youtube.com/watch?v=xyapRE7d3lw)
 
 ## Latest Version: 1.4.1
 
